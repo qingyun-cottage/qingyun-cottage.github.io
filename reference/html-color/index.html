@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS4颜色汇总148种颜色可排序</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      h2 {
+        color: #cc9966;
+        text-align: center;
+      }
+      p {
+        color: gray;
+        text-align: right;
+        padding: 5px 0;
+      }
+      li {
+        list-style: none;
+        display: inline-block;
+      }
+      .color-table {
+        width: 800px;
+        margin: 10px auto;
+        padding: 5px;
+        border: 1px solid gray;
+      }
+      .color-table ul {
+        display: flex;
+        justify-content: space-between;
+      }
+      .color-table ul:nth-of-type(1) {
+        border-top: 1px solid gray;
+      }
+      .color-table ul li {
+        text-align: center;
+        padding: 4px;
+        border: 1px solid white;
+      }
+      .color-table ul li:nth-of-type(1),
+      .color-table ul li:nth-of-type(6) {
+        width: 100px;
+      }
+      .color-table ul li:nth-of-type(2) {
+        width: 180px;
+      }
+      .color-table ul li:nth-of-type(3) {
+        width: 150px;
+      }
+      .color-table ul li:nth-of-type(4) {
+        width: 90px;
+      }
+      .color-table ul li:nth-of-type(5) {
+        width: 120px;
+      }
+      ul ~ ul li:nth-of-type(2),
+      ul ~ ul li:nth-of-type(3) {
+        background-color: #dedede;
+      }
+      ul ~ ul li:nth-of-type(4),
+      ul ~ ul li:nth-of-type(5) {
+        background-color: #c0c0c0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="color-table">
+      <h2>CSS4颜色名称汇总</h2>
+      <p>注: 颜色名中含gray与grey,颜色值相同,在css中关键词不同</p>
+      <p>提示: 打开控制台进行排序</p>
+      <ul>
+        <li></li>
+        <li>颜色名</li>
+        <li>中文名称</li>
+        <li>Hex&nbsp;RGB</li>
+        <li>十进制 Decimal</li>
+        <li></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f0f8ff"></li>
+        <li>AliceBlue</li>
+        <li>爱丽丝蓝</li>
+        <li>#F0F8FF</li>
+        <li>240,248,255</li>
+        <li style="background-color: #f0f8ff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #faebd7"></li>
+        <li>AntiqueWhite</li>
+        <li>古董白</li>
+        <li>#FAEBD7</li>
+        <li>250,235,215</li>
+        <li style="background-color: #faebd7"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #00ffff"></li>
+        <li>Aqua</li>
+        <li>浅绿色(水色)</li>
+        <li>#00FFFF</li>
+        <li>0,255,255</li>
+        <li style="background-color: #00ffff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #7fffd4"></li>
+        <li>Aquamarine</li>
+        <li>宝石碧绿</li>
+        <li>#7FFFD4</li>
+        <li>127,255,212</li>
+        <li style="background-color: #7fffd4"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f0ffff"></li>
+        <li>Azure</li>
+        <li>蔚蓝色</li>
+        <li>#F0FFFF</li>
+        <li>240,255,255</li>
+        <li style="background-color: #f0ffff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f5f5dc"></li>
+        <li>Beige</li>
+        <li>米色/灰棕色</li>
+        <li>#F5F5DC</li>
+        <li>245,245,220</li>
+        <li style="background-color: #f5f5dc"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffe4c4"></li>
+        <li>Bisque</li>
+        <li>陶坯黄</li>
+        <li>#FFE4C4</li>
+        <li>255,228,196</li>
+        <li style="background-color: #ffe4c4"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #000000"></li>
+        <li>Black</li>
+        <li>纯黑</li>
+        <li>#000000</li>
+        <li>0,0,0</li>
+        <li style="background-color: #000000"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffebcd"></li>
+        <li>BlanchedAlmond</li>
+        <li>白杏色</li>
+        <li>#FFEBCD</li>
+        <li>255,235,205</li>
+        <li style="background-color: #ffebcd"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #0000ff"></li>
+        <li>Blue</li>
+        <li>纯蓝</li>
+        <li>#0000FF</li>
+        <li>0,0,255</li>
+        <li style="background-color: #0000ff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #8a2be2"></li>
+        <li>BlueViolet</li>
+        <li>蓝紫罗兰</li>
+        <li>#8A2BE2</li>
+        <li>138,43,226</li>
+        <li style="background-color: #8a2be2"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #a52a2a"></li>
+        <li>Brown</li>
+        <li>棕色</li>
+        <li>#A52A2A</li>
+        <li>165,42,42</li>
+        <li style="background-color: #a52a2a"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #deb887"></li>
+        <li>BurlyWood</li>
+        <li>硬木色</li>
+        <li>#DEB887</li>
+        <li>222,184,135</li>
+        <li style="background-color: #deb887"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #5f9ea0"></li>
+        <li>CadetBlue</li>
+        <li>军兰色(军服蓝)</li>
+        <li>#5F9EA0</li>
+        <li>95,158,160</li>
+        <li style="background-color: #5f9ea0"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #7fff00"></li>
+        <li>Chartreuse</li>
+        <li>黄绿色(查特酒绿)</li>
+        <li>#7FFF00</li>
+        <li>127,255,0</li>
+        <li style="background-color: #7fff00"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #d2691e"></li>
+        <li>Chocolate</li>
+        <li>巧克力色</li>
+        <li>#D2691E</li>
+        <li>210,105,30</li>
+        <li style="background-color: #d2691e"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ff7f50"></li>
+        <li>Coral</li>
+        <li>珊瑚</li>
+        <li>#FF7F50</li>
+        <li>255,127,80</li>
+        <li style="background-color: #ff7f50"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #6495ed"></li>
+        <li>CornflowerBlue</li>
+        <li>矢车菊蓝</li>
+        <li>#6495ED</li>
+        <li>100,149,237</li>
+        <li style="background-color: #6495ed"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fff8dc"></li>
+        <li>Cornsilk</li>
+        <li>玉米丝色</li>
+        <li>#FFF8DC</li>
+        <li>255,248,220</li>
+        <li style="background-color: #fff8dc"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #dc143c"></li>
+        <li>Crimson</li>
+        <li>深红(猩红)</li>
+        <li>#DC143C</li>
+        <li>220,20,60</li>
+        <li style="background-color: #dc143c"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #00ffff"></li>
+        <li>Cyan</li>
+        <li>青色</li>
+        <li>#00FFFF</li>
+        <li>0,255,255</li>
+        <li style="background-color: #00ffff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #00008b"></li>
+        <li>DarkBlue</li>
+        <li>暗蓝色</li>
+        <li>#00008B</li>
+        <li>0,0,139</li>
+        <li style="background-color: #00008b"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #008b8b"></li>
+        <li>DarkCyan</li>
+        <li>暗青色</li>
+        <li>#008B8B</li>
+        <li>0,139,139</li>
+        <li style="background-color: #008b8b"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #b8860b"></li>
+        <li>DarkGoldenrod</li>
+        <li>暗金菊黄</li>
+        <li>#B8860B</li>
+        <li>184,134,11</li>
+        <li style="background-color: #b8860b"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #a9a9a9"></li>
+        <li>DarkGray</li>
+        <li>深灰色</li>
+        <li>#A9A9A9</li>
+        <li>169,169,169</li>
+        <li style="background-color: #a9a9a9"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #006400"></li>
+        <li>DarkGreen</li>
+        <li>暗绿色</li>
+        <li>#006400</li>
+        <li>0,100,0</li>
+        <li style="background-color: #006400"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #a9a9a9"></li>
+        <li>DarkGrey</li>
+        <li>深灰色</li>
+        <li>#A9A9A9</li>
+        <li>169,169,169</li>
+        <li style="background-color: #a9a9a9"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #bdb76b"></li>
+        <li>DarkKhaki</li>
+        <li>暗黄褐色(深卡叽布)</li>
+        <li>#BDB76B</li>
+        <li>189,183,107</li>
+        <li style="background-color: #bdb76b"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #8b008b"></li>
+        <li>DarkMagenta</li>
+        <li>深洋红</li>
+        <li>#8B008B</li>
+        <li>139,0,139</li>
+        <li style="background-color: #8b008b"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #556b2f"></li>
+        <li>DarkOliveGreen</li>
+        <li>暗橄榄绿</li>
+        <li>#556B2F</li>
+        <li>85,107,47</li>
+        <li style="background-color: #556b2f"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ff8c00"></li>
+        <li>DarkOrange</li>
+        <li>深橙色</li>
+        <li>#FF8C00</li>
+        <li>255,140,0</li>
+        <li style="background-color: #ff8c00"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #9932cc"></li>
+        <li>DarkOrchid</li>
+        <li>暗兰花紫</li>
+        <li>#9932CC</li>
+        <li>153,50,204</li>
+        <li style="background-color: #9932cc"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #8b0000"></li>
+        <li>DarkRed</li>
+        <li>深红色</li>
+        <li>#8B0000</li>
+        <li>139,0,0</li>
+        <li style="background-color: #8b0000"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #e9967a"></li>
+        <li>DarkSalmon</li>
+        <li>深鲜肉/鲑鱼色</li>
+        <li>#E9967A</li>
+        <li>233,150,122</li>
+        <li style="background-color: #e9967a"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #8fbc8f"></li>
+        <li>DarkSeaGreen</li>
+        <li>暗海洋绿</li>
+        <li>#8FBC8F</li>
+        <li>143,188,143</li>
+        <li style="background-color: #8fbc8f"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #483d8b"></li>
+        <li>DarkSlateBlue</li>
+        <li>暗灰蓝色(暗板岩蓝)</li>
+        <li>#483D8B</li>
+        <li>72,61,139</li>
+        <li style="background-color: #483d8b"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #2f4f4f"></li>
+        <li>DarkSlateGray</li>
+        <li>暗瓦灰色(暗石板灰)</li>
+        <li>#2F4F4F</li>
+        <li>47,79,79</li>
+        <li style="background-color: #2f4f4f"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #2f4f4f"></li>
+        <li>DarkSlateGrey</li>
+        <li>暗瓦灰色(暗石板灰)</li>
+        <li>#2F4F4F</li>
+        <li>47,79,79</li>
+        <li style="background-color: #2f4f4f"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #00ced1"></li>
+        <li>DarkTurquoise</li>
+        <li>暗绿宝石</li>
+        <li>#00CED1</li>
+        <li>0,206,209</li>
+        <li style="background-color: #00ced1"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #9400d3"></li>
+        <li>DarkViolet</li>
+        <li>暗紫罗兰</li>
+        <li>#9400D3</li>
+        <li>148,0,211</li>
+        <li style="background-color: #9400d3"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ff1493"></li>
+        <li>DeepPink</li>
+        <li>深粉红</li>
+        <li>#FF1493</li>
+        <li>255,20,147</li>
+        <li style="background-color: #ff1493"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #00bfff"></li>
+        <li>DeepSkyBlue</li>
+        <li>深天蓝</li>
+        <li>#00BFFF</li>
+        <li>0,191,255</li>
+        <li style="background-color: #00bfff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #696969"></li>
+        <li>DimGray</li>
+        <li>暗淡的灰色</li>
+        <li>#696969</li>
+        <li>105,105,105</li>
+        <li style="background-color: #696969"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #696969"></li>
+        <li>DimGrey</li>
+        <li>暗淡的灰色</li>
+        <li>#696969</li>
+        <li>105,105,105</li>
+        <li style="background-color: #696969"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #1e90ff"></li>
+        <li>DodgerBlue</li>
+        <li>闪兰色(道奇蓝)</li>
+        <li>#1E90FF</li>
+        <li>30,144,255</li>
+        <li style="background-color: #1e90ff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #b22222"></li>
+        <li>FireBrick</li>
+        <li>火砖色(耐火砖)</li>
+        <li>#B22222</li>
+        <li>178,34,34</li>
+        <li style="background-color: #b22222"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fffaf0"></li>
+        <li>FloralWhite</li>
+        <li>花的白色</li>
+        <li>#FFFAF0</li>
+        <li>255,250,240</li>
+        <li style="background-color: #fffaf0"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #228b22"></li>
+        <li>ForestGreen</li>
+        <li>森林绿</li>
+        <li>#228B22</li>
+        <li>34,139,34</li>
+        <li style="background-color: #228b22"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ff00ff"></li>
+        <li>Fuchsia</li>
+        <li>紫红(灯笼海棠)</li>
+        <li>#FF00FF</li>
+        <li>255,0,255</li>
+        <li style="background-color: #ff00ff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #dcdcdc"></li>
+        <li>Gainsboro</li>
+        <li>淡灰色(庚斯博罗灰)</li>
+        <li>#DCDCDC</li>
+        <li>220,220,220</li>
+        <li style="background-color: #dcdcdc"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f8f8ff"></li>
+        <li>GhostWhite</li>
+        <li>幽灵白</li>
+        <li>#F8F8FF</li>
+        <li>248,248,255</li>
+        <li style="background-color: #f8f8ff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffd700"></li>
+        <li>Gold</li>
+        <li>金色</li>
+        <li>#FFD700</li>
+        <li>255,215,0</li>
+        <li style="background-color: #ffd700"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #daa520"></li>
+        <li>Goldenrod</li>
+        <li>金菊黄</li>
+        <li>#DAA520</li>
+        <li>218,165,32</li>
+        <li style="background-color: #daa520"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #808080"></li>
+        <li>Gray</li>
+        <li>灰色</li>
+        <li>#808080</li>
+        <li>128,128,128</li>
+        <li style="background-color: #808080"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #008000"></li>
+        <li>Green</li>
+        <li>纯绿</li>
+        <li>#008000</li>
+        <li>0,128,0</li>
+        <li style="background-color: #008000"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #adff2f"></li>
+        <li>GreenYellow</li>
+        <li>绿黄色</li>
+        <li>#ADFF2F</li>
+        <li>173,255,47</li>
+        <li style="background-color: #adff2f"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #808080"></li>
+        <li>Grey</li>
+        <li>灰色</li>
+        <li>#808080</li>
+        <li>128,128,128</li>
+        <li style="background-color: #808080"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f0fff0"></li>
+        <li>Honeydew</li>
+        <li>蜜色(蜜瓜色)</li>
+        <li>#F0FFF0</li>
+        <li>240,255,240</li>
+        <li style="background-color: #f0fff0"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ff69b4"></li>
+        <li>HotPink</li>
+        <li>热情的粉红</li>
+        <li>#FF69B4</li>
+        <li>255,105,180</li>
+        <li style="background-color: #ff69b4"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #cd5c5c"></li>
+        <li>IndianRed</li>
+        <li>印度红</li>
+        <li>#CD5C5C</li>
+        <li>205,92,92</li>
+        <li style="background-color: #cd5c5c"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #4b0082"></li>
+        <li>Indigo</li>
+        <li>靛青/紫兰色</li>
+        <li>#4B0082</li>
+        <li>75,0,130</li>
+        <li style="background-color: #4b0082"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fffff0"></li>
+        <li>Ivory</li>
+        <li>象牙色</li>
+        <li>#FFFFF0</li>
+        <li>255,255,240</li>
+        <li style="background-color: #fffff0"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f0e68c"></li>
+        <li>Khaki</li>
+        <li>黄褐色(卡叽布)</li>
+        <li>#F0E68C</li>
+        <li>240,230,140</li>
+        <li style="background-color: #f0e68c"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #e6e6fa"></li>
+        <li>Lavender</li>
+        <li>淡紫色(熏衣草淡紫)</li>
+        <li>#E6E6FA</li>
+        <li>230,230,250</li>
+        <li style="background-color: #e6e6fa"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fff0f5"></li>
+        <li>LavenderBlush</li>
+        <li>淡紫红</li>
+        <li>#FFF0F5</li>
+        <li>255,240,245</li>
+        <li style="background-color: #fff0f5"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #7cfc00"></li>
+        <li>LawnGreen</li>
+        <li>草绿色(草坪绿)</li>
+        <li>#7CFC00</li>
+        <li>124,252,0</li>
+        <li style="background-color: #7cfc00"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fffacd"></li>
+        <li>LemonChiffon</li>
+        <li>柠檬绸</li>
+        <li>#FFFACD</li>
+        <li>255,250,205</li>
+        <li style="background-color: #fffacd"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #add8e6"></li>
+        <li>LightBlue</li>
+        <li>亮蓝</li>
+        <li>#ADD8E6</li>
+        <li>173,216,230</li>
+        <li style="background-color: #add8e6"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f08080"></li>
+        <li>LightCoral</li>
+        <li>淡珊瑚色</li>
+        <li>#F08080</li>
+        <li>240,128,128</li>
+        <li style="background-color: #f08080"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #e0ffff"></li>
+        <li>LightCyan</li>
+        <li>淡青色</li>
+        <li>#E0FFFF</li>
+        <li>224,255,255</li>
+        <li style="background-color: #e0ffff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fafad2"></li>
+        <li>LightGoldenrodYellow</li>
+        <li>亮菊黄</li>
+        <li>#FAFAD2</li>
+        <li>250,250,210</li>
+        <li style="background-color: #fafad2"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #d3d3d3"></li>
+        <li>LightGray</li>
+        <li>浅灰色</li>
+        <li>#D3D3D3</li>
+        <li>211,211,211</li>
+        <li style="background-color: #d3d3d3"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #90ee90"></li>
+        <li>LightGreen</li>
+        <li>淡绿色</li>
+        <li>#90EE90</li>
+        <li>144,238,144</li>
+        <li style="background-color: #90ee90"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #d3d3d3"></li>
+        <li>LightGrey</li>
+        <li>浅灰色</li>
+        <li>#D3D3D3</li>
+        <li>211,211,211</li>
+        <li style="background-color: #d3d3d3"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffb6c1"></li>
+        <li>LightPink</li>
+        <li>浅粉红</li>
+        <li>#FFB6C1</li>
+        <li>255,182,193</li>
+        <li style="background-color: #ffb6c1"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffa07a"></li>
+        <li>LightSalmon</li>
+        <li>浅鲑鱼肉色</li>
+        <li>#FFA07A</li>
+        <li>255,160,122</li>
+        <li style="background-color: #ffa07a"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #20b2aa"></li>
+        <li>LightSeaGreen</li>
+        <li>浅海洋绿</li>
+        <li>#20B2AA</li>
+        <li>32,178,170</li>
+        <li style="background-color: #20b2aa"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #87cefa"></li>
+        <li>LightSkyBlue</li>
+        <li>亮天蓝色</li>
+        <li>#87CEFA</li>
+        <li>135,206,250</li>
+        <li style="background-color: #87cefa"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #778899"></li>
+        <li>LightSlateGray</li>
+        <li>亮蓝灰(亮石板灰)</li>
+        <li>#778899</li>
+        <li>119,136,153</li>
+        <li style="background-color: #778899"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #778899"></li>
+        <li>LightSlateGrey</li>
+        <li>亮蓝灰(亮石板灰)</li>
+        <li>#778899</li>
+        <li>119,136,153</li>
+        <li style="background-color: #778899"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #b0c4de"></li>
+        <li>LightSteelBlue</li>
+        <li>亮钢蓝</li>
+        <li>#B0C4DE</li>
+        <li>176,196,222</li>
+        <li style="background-color: #b0c4de"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffffe0"></li>
+        <li>LightYellow</li>
+        <li>浅黄色</li>
+        <li>#FFFFE0</li>
+        <li>255,255,224</li>
+        <li style="background-color: #ffffe0"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #00ff00"></li>
+        <li>Lime</li>
+        <li>闪光绿</li>
+        <li>#00FF00</li>
+        <li>0,255,0</li>
+        <li style="background-color: #00ff00"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #32cd32"></li>
+        <li>LimeGreen</li>
+        <li>闪光深绿</li>
+        <li>#32CD32</li>
+        <li>50,205,50</li>
+        <li style="background-color: #32cd32"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #faf0e6"></li>
+        <li>Linen</li>
+        <li>亚麻布</li>
+        <li>#FAF0E6</li>
+        <li>250,240,230</li>
+        <li style="background-color: #faf0e6"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ff00ff"></li>
+        <li>Magenta</li>
+        <li>洋红(玫瑰红)</li>
+        <li>#FF00FF</li>
+        <li>255,0,255</li>
+        <li style="background-color: #ff00ff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #800000"></li>
+        <li>Maroon</li>
+        <li>栗色</li>
+        <li>#800000</li>
+        <li>128,0,0</li>
+        <li style="background-color: #800000"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #66cdaa"></li>
+        <li>MediumAquamarine</li>
+        <li>中宝石碧绿</li>
+        <li>#66CDAA</li>
+        <li>102,205,170</li>
+        <li style="background-color: #66cdaa"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #0000cd"></li>
+        <li>MediumBlue</li>
+        <li>中蓝色</li>
+        <li>#0000CD</li>
+        <li>0,0,205</li>
+        <li style="background-color: #0000cd"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ba55d3"></li>
+        <li>MediumOrchid</li>
+        <li>中兰花紫</li>
+        <li>#BA55D3</li>
+        <li>186,85,211</li>
+        <li style="background-color: #ba55d3"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #9370db"></li>
+        <li>MediumPurple</li>
+        <li>中紫色</li>
+        <li>#9370DB</li>
+        <li>147,112,219</li>
+        <li style="background-color: #9370db"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #3cb371"></li>
+        <li>MediumSeaGreen</li>
+        <li>中海洋绿</li>
+        <li>#3CB371</li>
+        <li>60,179,113</li>
+        <li style="background-color: #3cb371"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #7b68ee"></li>
+        <li>MediumSlateBlue</li>
+        <li>中暗蓝色(中板岩蓝)</li>
+        <li>#7B68EE</li>
+        <li>123,104,238</li>
+        <li style="background-color: #7b68ee"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #00fa9a"></li>
+        <li>MediumSpringGreen</li>
+        <li>中春绿色</li>
+        <li>#00FA9A</li>
+        <li>0,250,154</li>
+        <li style="background-color: #00fa9a"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #48d1cc"></li>
+        <li>MediumTurquoise</li>
+        <li>中绿宝石</li>
+        <li>#48D1CC</li>
+        <li>72,209,204</li>
+        <li style="background-color: #48d1cc"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #c71585"></li>
+        <li>MediumVioletRed</li>
+        <li>中紫罗兰红</li>
+        <li>#C71585</li>
+        <li>199,21,133</li>
+        <li style="background-color: #c71585"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #191970"></li>
+        <li>MidnightBlue</li>
+        <li>午夜蓝</li>
+        <li>#191970</li>
+        <li>25,25,112</li>
+        <li style="background-color: #191970"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f5fffa"></li>
+        <li>MintCream</li>
+        <li>薄荷奶油</li>
+        <li>#F5FFFA</li>
+        <li>245,255,250</li>
+        <li style="background-color: #f5fffa"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffe4e1"></li>
+        <li>MistyRose</li>
+        <li>浅玫瑰色(薄雾玫瑰)</li>
+        <li>#FFE4E1</li>
+        <li>255,228,225</li>
+        <li style="background-color: #ffe4e1"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffe4b5"></li>
+        <li>Moccasin</li>
+        <li>鹿皮色(鹿皮靴)</li>
+        <li>#FFE4B5</li>
+        <li>255,228,181</li>
+        <li style="background-color: #ffe4b5"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffdead"></li>
+        <li>NavajoWhite</li>
+        <li>纳瓦白(土著白)</li>
+        <li>#FFDEAD</li>
+        <li>255,222,173</li>
+        <li style="background-color: #ffdead"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #000080"></li>
+        <li>Navy</li>
+        <li>海军蓝</li>
+        <li>#000080</li>
+        <li>0,0,128</li>
+        <li style="background-color: #000080"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fdf5e6"></li>
+        <li>OldLace</li>
+        <li>老花色(旧蕾丝)</li>
+        <li>#FDF5E6</li>
+        <li>253,245,230</li>
+        <li style="background-color: #fdf5e6"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #808000"></li>
+        <li>Olive</li>
+        <li>橄榄</li>
+        <li>#808000</li>
+        <li>128,128,0</li>
+        <li style="background-color: #808000"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #6b8e23"></li>
+        <li>OliveDrab</li>
+        <li>橄榄褐色</li>
+        <li>#6B8E23</li>
+        <li>107,142,35</li>
+        <li style="background-color: #6b8e23"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffa500"></li>
+        <li>Orange</li>
+        <li>橙色</li>
+        <li>#FFA500</li>
+        <li>255,165,0</li>
+        <li style="background-color: #ffa500"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ff4500"></li>
+        <li>OrangeRed</li>
+        <li>橙红色</li>
+        <li>#FF4500</li>
+        <li>255,69,0</li>
+        <li style="background-color: #ff4500"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #da70d6"></li>
+        <li>Orchid</li>
+        <li>暗紫色(兰花紫)</li>
+        <li>#DA70D6</li>
+        <li>218,112,214</li>
+        <li style="background-color: #da70d6"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #eee8aa"></li>
+        <li>PaleGoldenrod</li>
+        <li>灰菊黄(苍麒麟色)</li>
+        <li>#EEE8AA</li>
+        <li>238,232,170</li>
+        <li style="background-color: #eee8aa"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #98fb98"></li>
+        <li>PaleGreen</li>
+        <li>弱绿色</li>
+        <li>#98FB98</li>
+        <li>152,251,152</li>
+        <li style="background-color: #98fb98"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #afeeee"></li>
+        <li>PaleTurquoise</li>
+        <li>弱绿宝石</li>
+        <li>#AFEEEE</li>
+        <li>175,238,238</li>
+        <li style="background-color: #afeeee"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #db7093"></li>
+        <li>PaleVioletRed</li>
+        <li>弱紫罗兰红</li>
+        <li>#DB7093</li>
+        <li>219,112,147</li>
+        <li style="background-color: #db7093"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffefd5"></li>
+        <li>PapayaWhip</li>
+        <li>番木色(番木瓜)</li>
+        <li>#FFEFD5</li>
+        <li>255,239,213</li>
+        <li style="background-color: #ffefd5"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffdab9"></li>
+        <li>PeachPuff</li>
+        <li>桃肉色</li>
+        <li>#FFDAB9</li>
+        <li>255,218,185</li>
+        <li style="background-color: #ffdab9"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #cd853f"></li>
+        <li>Peru</li>
+        <li>秘鲁色</li>
+        <li>#CD853F</li>
+        <li>205,133,63</li>
+        <li style="background-color: #cd853f"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffc0cb"></li>
+        <li>Pink</li>
+        <li>粉红</li>
+        <li>#FFC0CB</li>
+        <li>255,192,203</li>
+        <li style="background-color: #ffc0cb"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #dda0dd"></li>
+        <li>Plum</li>
+        <li>洋李色(李子紫)</li>
+        <li>#DDA0DD</li>
+        <li>221,160,221</li>
+        <li style="background-color: #dda0dd"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #b0e0e6"></li>
+        <li>PowderBlue</li>
+        <li>粉蓝色(火药青)</li>
+        <li>#B0E0E6</li>
+        <li>176,224,230</li>
+        <li style="background-color: #b0e0e6"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #800080"></li>
+        <li>Purple</li>
+        <li>紫色</li>
+        <li>#800080</li>
+        <li>128,0,128</li>
+        <li style="background-color: #800080"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #663399"></li>
+        <li>RebeccaPurple</li>
+        <li>丽贝卡紫</li>
+        <li>#663399</li>
+        <li>102,51,153</li>
+        <li style="background-color: #663399"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ff0000"></li>
+        <li>Red</li>
+        <li>纯红</li>
+        <li>#FF0000</li>
+        <li>255,0,0</li>
+        <li style="background-color: #ff0000"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #bc8f8f"></li>
+        <li>RosyBrown</li>
+        <li>玫瑰棕色</li>
+        <li>#BC8F8F</li>
+        <li>188,143,143</li>
+        <li style="background-color: #bc8f8f"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #4169e1"></li>
+        <li>RoyalBlue</li>
+        <li>皇家蓝/宝蓝</li>
+        <li>#4169E1</li>
+        <li>65,105,225</li>
+        <li style="background-color: #4169e1"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #8b4513"></li>
+        <li>SaddleBrown</li>
+        <li>重褐色(马鞍棕色)</li>
+        <li>#8B4513</li>
+        <li>139,69,19</li>
+        <li style="background-color: #8b4513"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fa8072"></li>
+        <li>Salmon</li>
+        <li>鲜肉/鲑鱼色</li>
+        <li>#FA8072</li>
+        <li>250,128,114</li>
+        <li style="background-color: #fa8072"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f4a460"></li>
+        <li>SandyBrown</li>
+        <li>沙棕色</li>
+        <li>#F4A460</li>
+        <li>244,164,96</li>
+        <li style="background-color: #f4a460"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #2e8b57"></li>
+        <li>SeaGreen</li>
+        <li>海洋绿</li>
+        <li>#2E8B57</li>
+        <li>46,139,87</li>
+        <li style="background-color: #2e8b57"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fff5ee"></li>
+        <li>Seashell</li>
+        <li>海贝壳</li>
+        <li>#FFF5EE</li>
+        <li>255,245,238</li>
+        <li style="background-color: #fff5ee"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #a0522d"></li>
+        <li>Sienna</li>
+        <li>黄土赭色</li>
+        <li>#A0522D</li>
+        <li>160,82,45</li>
+        <li style="background-color: #a0522d"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #c0c0c0"></li>
+        <li>Silver</li>
+        <li>银灰色</li>
+        <li>#C0C0C0</li>
+        <li>192,192,192</li>
+        <li style="background-color: #c0c0c0"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #87ceeb"></li>
+        <li>SkyBlue</li>
+        <li>天蓝色</li>
+        <li>#87CEEB</li>
+        <li>135,206,235</li>
+        <li style="background-color: #87ceeb"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #6a5acd"></li>
+        <li>SlateBlue</li>
+        <li>石蓝色(板岩蓝)</li>
+        <li>#6A5ACD</li>
+        <li>106,90,205</li>
+        <li style="background-color: #6a5acd"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #708090"></li>
+        <li>SlateGray</li>
+        <li>灰石色(石板灰)</li>
+        <li>#708090</li>
+        <li>112,128,144</li>
+        <li style="background-color: #708090"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #708090"></li>
+        <li>SlateGrey</li>
+        <li>灰石色(石板灰)</li>
+        <li>#708090</li>
+        <li>112,128,144</li>
+        <li style="background-color: #708090"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #fffafa"></li>
+        <li>Snow</li>
+        <li>雪白色</li>
+        <li>#FFFAFA</li>
+        <li>255,250,250</li>
+        <li style="background-color: #fffafa"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #00ff7f"></li>
+        <li>SpringGreen</li>
+        <li>春绿色</li>
+        <li>#00FF7F</li>
+        <li>0,255,127</li>
+        <li style="background-color: #00ff7f"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #4682b4"></li>
+        <li>SteelBlue</li>
+        <li>钢蓝/铁青</li>
+        <li>#4682B4</li>
+        <li>70,130,180</li>
+        <li style="background-color: #4682b4"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #d2b48c"></li>
+        <li>Tan</li>
+        <li>茶色</li>
+        <li>#D2B48C</li>
+        <li>210,180,140</li>
+        <li style="background-color: #d2b48c"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #008080"></li>
+        <li>Teal</li>
+        <li>水鸭色</li>
+        <li>#008080</li>
+        <li>0,128,128</li>
+        <li style="background-color: #008080"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #d8bfd8"></li>
+        <li>Thistle</li>
+        <li>蓟色</li>
+        <li>#D8BFD8</li>
+        <li>216,191,216</li>
+        <li style="background-color: #d8bfd8"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ff6347"></li>
+        <li>Tomato</li>
+        <li>番茄红</li>
+        <li>#FF6347</li>
+        <li>255,99,71</li>
+        <li style="background-color: #ff6347"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #40e0d0"></li>
+        <li>Turquoise</li>
+        <li>绿宝石</li>
+        <li>#40E0D0</li>
+        <li>64,224,208</li>
+        <li style="background-color: #40e0d0"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ee82ee"></li>
+        <li>Violet</li>
+        <li>紫罗兰</li>
+        <li>#EE82EE</li>
+        <li>238,130,238</li>
+        <li style="background-color: #ee82ee"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f5deb3"></li>
+        <li>Wheat</li>
+        <li>浅黄色(小麦色)</li>
+        <li>#F5DEB3</li>
+        <li>245,222,179</li>
+        <li style="background-color: #f5deb3"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffffff"></li>
+        <li>White</li>
+        <li>纯白</li>
+        <li>#FFFFFF</li>
+        <li>255,255,255</li>
+        <li style="background-color: #ffffff"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #f5f5f5"></li>
+        <li>WhiteSmoke</li>
+        <li>白烟</li>
+        <li>#F5F5F5</li>
+        <li>245,245,245</li>
+        <li style="background-color: #f5f5f5"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #ffff00"></li>
+        <li>Yellow</li>
+        <li>纯黄</li>
+        <li>#FFFF00</li>
+        <li>255,255,0</li>
+        <li style="background-color: #ffff00"></li>
+      </ul>
+      <ul>
+        <li style="background-color: #9acd32"></li>
+        <li>YellowGreen</li>
+        <li>黄绿色</li>
+        <li>#9ACD32</li>
+        <li>154,205,50</li>
+        <li style="background-color: #9acd32"></li>
+      </ul>
+    </div>
+    <!-- 控件,待开发 -->
+    <div class="container"></div>
+    <script>
+      //   排序方法
+      let compareOfKey = (property) => {
+        return (a, b) => {
+          let value1 = a[property];
+          let value2 = b[property];
+          if (value1 < value2) {
+            return -1;
+          } else if (value1 > value2) {
+            return 1;
+          }
+          return 0;
+        };
+      };
+      // 封装一个排序函数
+      let sortByKey = (list, listKey) => {
+        list.sort(compareOfKey(listKey));
+      };
+    </script>
+    <script>
+      let colorList = [];
+      let oColorUl = document.querySelectorAll('ul ~ ul');
+      for (let i = 0; i < oColorUl.length; i++) {
+        let temp = {};
+        temp.colorNameEN = oColorUl[i].children[1].innerHTML;
+        temp.colorNameCN = oColorUl[i].children[2].innerHTML;
+        temp.colorHex = oColorUl[i].children[3].innerHTML;
+        temp.colorDec = oColorUl[i].children[4].innerHTML;
+        colorList.push(temp);
+      }
+      //   排序colorList
+      let sortColor = (num) => {
+        let keyName;
+        switch (num) {
+          case 1:
+            keyName = 'colorNameEN';
+            break;
+          case 2:
+            keyName = 'colorNameCN';
+            break;
+          case 3:
+            keyName = 'colorHex';
+            break;
+          case 4:
+            keyName = 'colorDec';
+            break;
+          default:
+            keyName = 0;
+            break;
+        }
+        if (keyName == 0) {
+          console.log('请输入正确的数字参数!');
+          return;
+        }
+        sortByKey(colorList, keyName);
+        //   重新输出页面
+        for (let i = 0; i < colorList.length; i++) {
+          oColorUl[i].innerHTML = `<li style="background-color: ${colorList[i].colorHex}"</li>
+          <li>${colorList[i].colorNameEN}</li>
+          <li>${colorList[i].colorNameCN}</li>
+          <li>${colorList[i].colorHex}</li>
+          <li>${colorList[i].colorDec}</li>
+          <li style="background-color: ${colorList[i].colorHex}">
+        </li>`;
+        }
+      };
+      console.log(
+        '信息提示:\n可以调用sortColor函数展示不同的颜色顺序,页面初始默认按英文名排序(更多功能比如按rgb某一通道颜色值、16进制拆分排序请等待后续开发)\n目前函数参数可选1~4\n1 代表 颜色名\n2 代表 中文名称\n3 代表 Hex RGB\n4 代表 十进制 Decimal\n比如sortColor(4)表示按十进制 Decimal排序\n\n复制下面一行\nsortColor()\n在下面粘贴并填写数字,就能实现不同的排序'
+      );
+    </script>
+  </body>
+</html>
