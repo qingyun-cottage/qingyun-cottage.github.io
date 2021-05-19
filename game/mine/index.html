@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>扫雷原生2.0</title>
+    <style>
+      html {
+        /* width: 2500px; */
+        background-color: #eee;
+      }
+      .menu {
+        position: fixed;
+        display: flex;
+        top: 15px;
+        left: 15px;
+      }
+      .options button {
+        padding: 6px 15px;
+        background-color: #02a4ad;
+        border: none;
+        color: #fff;
+        border-radius: 6px;
+        outline: none;
+        cursor: pointer;
+      }
+      .options button:active {
+        background-color: #00abff;
+      }
+      .options button.active {
+        background-color: #00abff;
+      }
+      .info {
+        /* text-align: center; */
+        position: relative;
+        left: 15px;
+        bottom: 12px;
+      }
+      /* 表格样式start */
+      .game-box {
+        width: 2700px;
+        margin: 100px 80px;
+        overflow: hidden;
+      }
+      .game-box table {
+        border-spacing: 1px;
+        background-color: #929196;
+        resize: none;
+      }
+      .game-box table td {
+        box-sizing: border-box;
+        padding: 0;
+        width: 22px;
+        height: 22px;
+        background-color: #ccc;
+        border: 2px solid;
+        border-color: #fff #a1a1a1 #a1a1a1 #fff;
+        /* 文字 */
+        text-align: center;
+        line-height: 16px;
+        font-weight: bold;
+        user-select: none;
+      }
+      /* 单元格样式 */
+      .game-box table td.mine,
+      .game-box table td.zero,
+      .game-box table td.one,
+      .game-box table td.two,
+      .game-box table td.three,
+      .game-box table td.four,
+      .game-box table td.five,
+      .game-box table td.six,
+      .game-box table td.seven,
+      .game-box table td.eight {
+        border-color: #d9d9d9;
+        background-color: #d9d9d9;
+      }
+      .game-box table td.flag {
+        background: url(./img/flag.png) #ccc;
+        background-size: cover;
+      }
+      .game-box table td.mine {
+        background: url(./img/mine.png) #d9d9d9;
+        background-size: cover;
+      }
+      .game-box table td.one {
+        color: #0332fe;
+      }
+      .game-box table td.two {
+        color: #019f02;
+      }
+      .game-box table td.three {
+        color: #ff2600;
+      }
+      .game-box table td.four {
+        color: #93208f;
+      }
+      .game-box table td.five {
+        color: #dd133f;
+      }
+      .game-box table td.six {
+        color: #fa7821;
+      }
+      .game-box table td.seven {
+        color: #222;
+      }
+      .game-box table td.eight {
+        color: #888;
+      }
+      /* 表格样式end */
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <div class="options">
+        <button class="active">初级</button>
+        <button>中级</button>
+        <button>高级</button>
+        <button>特级</button>
+        <button>地狱级</button>
+        <button>重新开始</button>
+      </div>
+      <p class="info">剩余雷数:<span class="mine-num"></span></p>
+    </div>
+    <div class="game-box"></div>
+    <script>
+      // Mine类
+      function Mine(rowNum, colNum, mineNum) {
+        this.rowNum = rowNum
+        this.colNum = colNum
+        this.mineNum = mineNum
+        this.blockArr = []
+        // 非雷格子数,每打开一个格子减一,用于判断游戏胜利
+        this.lastNum = colNum * colNum - mineNum
+        // 页面雷的数量渲染
+        this.surplusText = document.querySelector('.mine-num')
+        this.surplusNum = mineNum
+      }
+
+      // 数字对应的类名
+      const numClassList = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
+
+      // 初始化雷的位置
+      Mine.prototype.initMine = function () {
+        // 设置两个变量,假设 isMineNum 为 10, notMineNum 为 100
+        let isMineNum = this.mineNum
+        let notMineNum = this.rowNum * this.colNum
+        // 生成rowNum*colNum的二维数组,初始化雷的位置
+        for (let i = 0; i < this.rowNum; i++) {
+          this.blockArr[i] = []
+          for (let j = 0; j < this.colNum; j++) {
+            let block = (this.blockArr[i][j] = {
+              row: i,
+              col: j,
+              type: '',
+              value: 0,
+              isFlag: false,
+              isOpen: false,
+            })
+            // 生成总共 notMineNum (100)个整数(0~99), 前 isMineNum (10)个是雷(0~9)
+            let ranVal = parseInt(Math.random() * notMineNum)
+            // 每生成一次,总数减一, 如果是雷,雷数减一
+            notMineNum--
+            if (ranVal < isMineNum) {
+              isMineNum--
+              block.type = 'mine'
+            } else {
+              block.type = 'num'
+            }
+          }
+        }
+        return this
+      }
+
+      // 获取周围格子并执行回调函数
+      Mine.prototype.getAround = function (row, col, callback) {
+        for (let i = row - 1; i <= row + 1; i++) {
+          for (let j = col - 1; j <= col + 1; j++) {
+            if (i < 0 || j < 0 || i >= this.rowNum || j >= this.colNum || (i == row && j == col)) {
+              continue
+            }
+            // 将符合条件的 i,j 回调
+            callback(i, j)
+          }
+        }
+      }
+
+      // 初始化非雷格子数字
+      Mine.prototype.initNum = function () {
+        let that = this
+        for (const rowArr of this.blockArr) {
+          for (const block of rowArr.filter((e) => e.type == 'mine')) {
+            // 获取周围格子,让其值加一
+            this.getAround(block.row, block.col, function (row, col) {
+              that.blockArr[row][col].value++
+            })
+          }
+        }
+        return this
+      }
+
+      // 创建Dom
+      Mine.prototype.createDom = function () {
+        let table = document.createElement('table')
+        this.tds = []
+        let that = this
+        for (let i = 0; i < this.rowNum; i++) {
+          let domTr = document.createElement('tr')
+          this.tds[i] = []
+          for (let j = 0; j < this.colNum; j++) {
+            let domTd = document.createElement('td')
+            this.tds[i][j] = domTd
+            domTd.pos = { row: i, col: j }
+            // 鼠标事件
+            domTd.onmousedown = function () {
+              that.userAction(event, this)
+            }
+            // test
+            // if (this.blockArr[i][j].type == 'mine') {
+            //   domTd.className = 'mine'
+            // } else {
+            //   domTd.innerHTML = this.blockArr[i][j].value
+            // }
+            // test
+            domTr.appendChild(domTd)
+          }
+          table.appendChild(domTr)
+        }
+        //
+        let gameBox = document.querySelector('.game-box')
+        gameBox.innerHTML = ''
+        gameBox.appendChild(table)
+        this.surplusText.innerText = this.mineNum
+        // 取消鼠标右键的默认事件
+        table.oncontextmenu = (e) => {
+          e.preventDefault()
+        }
+      }
+
+      // 鼠标事件
+      Mine.prototype.userAction = function (e, curTd) {
+        let curBlock = this.blockArr[curTd.pos.row][curTd.pos.col]
+        // 鼠标左键
+        if (e.which == 1 && !curBlock.isFlag) {
+          // 如果是没有打开的格子,则打开
+          if (!curBlock.isOpen) {
+            this.openBlockRecursion(curBlock, curTd)
+            return
+          }
+          // 如果是打开的格子，则判断快速开启
+          if (curBlock.isOpen) {
+            let aroundFlag = 0
+            let that = this
+            this.getAround(curBlock.row, curBlock.col, function (row, col) {
+              if (that.blockArr[row][col].isFlag) {
+                aroundFlag++
+              }
+            })
+            if (curBlock.value == aroundFlag) {
+              this.getAround(curBlock.row, curBlock.col, function (row, col) {
+                let block = that.blockArr[row][col]
+                let td = that.tds[row][col]
+                if (!block.isFlag) {
+                  that.openBlockRecursion(block, td)
+                }
+              })
+            }
+          }
+        }
+        // 鼠标右键
+        if (e.which == 3 && !curBlock.isOpen) {
+          if (curBlock.isFlag) {
+            this.surplusNum++
+            curTd.className = ''
+          } else {
+            this.surplusNum--
+            curTd.className = 'flag'
+          }
+          curBlock.isFlag = !curBlock.isFlag
+          this.surplusText.innerHTML = this.surplusNum
+        }
+      }
+
+      // 打开周围格子
+      Mine.prototype.openBlockRecursion = function (curBlock, curTd) {
+        if (curBlock.isOpen == true) {
+          return
+        }
+        curBlock.isOpen = true
+        if (curBlock.type == 'mine') {
+          this.gameOver(curTd)
+        } else {
+          curTd.className = numClassList[curBlock.value]
+          this.lastNum--
+          if (this.lastNum == 0) {
+            this.gameWin()
+          }
+          if (curBlock.value) {
+            curTd.innerHTML = curBlock.value
+          } else {
+            let that = this
+            this.getAround(curBlock.row, curBlock.col, function (row, col) {
+              that.openBlockRecursion(that.blockArr[row][col], that.tds[row][col])
+            })
+          }
+        }
+      }
+
+      // 游戏结束和游戏胜利
+      Mine.prototype.gameOver = function (curTd) {
+        curTd.style.backgroundColor = 'red'
+        this.showMine('mine')
+        setTimeout(() => {
+          alert('GameOver!')
+        }, 200)
+      }
+      Mine.prototype.gameWin = function () {
+        this.surplusNum = 0
+        this.surplusText.innerHTML = 0
+        this.showMine('flag')
+        console.log('GameWin!')
+        setTimeout(() => {
+          alert('恭喜你,游戏胜利!')
+        }, 200)
+      }
+
+      // 显示全部是雷的格子
+      Mine.prototype.showMine = function (showType) {
+        for (const tr of this.tds) {
+          for (const td of tr) {
+            td.onmousedown = null
+            let curBlock = this.blockArr[td.pos.row][td.pos.col]
+            if (curBlock.type == 'mine' && !curBlock.isFlag) {
+              td.className = showType
+            }
+          }
+        }
+      }
+
+      // 总初始化方法
+      Mine.prototype.init = function () {
+        this.initMine().initNum().createDom()
+      }
+    </script>
+    <script>
+      // 难度选择
+      const options = [
+        [9, 9, 10],
+        [16, 16, 40],
+        [28, 28, 99],
+        [56, 56, 400],
+        [112, 112, 1600],
+      ]
+      // 开始时默认难度
+      let nowOpt = 0
+      // 加载难度
+      let loadByOpt = function (nowOpt) {
+        let mine = new Mine(...options[nowOpt]).init()
+      }
+      let btn = document.querySelectorAll('.options button')
+      for (let i = 0; i < options.length; i++) {
+        btn[i].onclick = function () {
+          if (i != nowOpt) {
+            btn[nowOpt].className = ''
+            btn[i].className = 'active'
+            nowOpt = i
+            loadByOpt(nowOpt)
+          }
+        }
+      }
+      btn[options.length].onclick = function () {
+        loadByOpt(nowOpt)
+      }
+      // 首次加载
+      loadByOpt(nowOpt)
+    </script>
+  </body>
+</html>
