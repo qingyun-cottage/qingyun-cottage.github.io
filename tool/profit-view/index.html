@@ -1,15 +1,107 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>查看</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-  
-  <script>
-
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>收益查看</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC',
+          'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+      }
+      #app {
+        /* width: 50vw; */
+        /* height: 100%; */
+        padding: 5vw;
+      }
+      .sum {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 5vw;
+        background: linear-gradient(#e13b45, #fd7058);
+        border-radius: 2vw;
+        color: #fff;
+        text-align: center;
+        z-index: 99;
+      }
+      .all {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        /* height: 21vw; */
+      }
+      .all span:nth-of-type(1) {
+        font-size: 3.6vw;
+      }
+      .all span:nth-of-type(2) {
+        font-size: 8.5vw;
+        margin-top: 4vw;
+      }
+      .profit {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        /* height: 15vw; */
+        margin-top: 4vw;
+      }
+      .profit .pf-box {
+        display: flex;
+        flex-direction: column;
+      }
+      .profit .pf-box span:nth-of-type(1) {
+        font-size: 3.6vw;
+      }
+      .profit .pf-box span:nth-of-type(2) {
+        font-size: 4.6vw;
+        margin-top: 2vw;
+      }
+      .detail {
+        /* display: flex; */
+        position: relative;
+        top: -2vw;
+        height: 40vw;
+        background-color: #fffdf8;
+        border: 0.3vw solid #e2e1dd;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="sum">
+        <div class="all">
+          <span>资产（元）</span>
+          <span>301,349.23</span>
+        </div>
+        <div class="profit">
+          <div class="yesterday pf-box">
+            <span>昨日收益</span>
+            <span>12.03</span>
+          </div>
+          <div class="total pf-box">
+            <span>累计收益</span>
+            <span>1,349.23</span>
+          </div>
+        </div>
+      </div>
+      <div class="detail"></div>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data() {
+          return {}
+        },
+        created() {}
+      })
+    </script>
+  </body>
 </html>
