@@ -67,12 +67,49 @@
         /* display: flex; */
         position: relative;
         top: -2vw;
-        height: 40vw;
+        /* height: 40vw; */
+        padding: 5vw 4vw;
         background-color: #fffdf8;
         border: 0.3vw solid #e2e1dd;
         z-index: 0;
       }
-
+      .detail .date {
+        font-size: 4vw;
+      }
+      .detail .date::after {
+        content: '稳健型';
+        position: relative;
+        top: -1vw;
+        left: 2vw;
+        font-size: 1.8vw;
+        padding: 0.5vw;
+        /* border-radius:2vw; */
+        color: #378dff;
+        background-color: #d5f3ff;
+      }
+      .detail .content {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+      }
+      .detail .content .de-box {
+        display: flex;
+        flex-direction: column;
+        margin-top: 5vw;
+        text-align: center;
+        /* width: 100%;
+        height: 100%; */
+      }
+      .detail .content .de-box span:nth-of-type(1) {
+        font-size: 4vw;
+      }
+      .detail .content .de-box span:nth-of-type(2) {
+        margin-top: 1vw;
+        font-size: 3vw;
+      }
+      .detail .content .de-box .point {
+        color: #ff0000;
+      }
     </style>
   </head>
   <body>
@@ -85,7 +122,7 @@
         <div class="profit">
           <div class="yesterday pf-box">
             <span>昨日收益</span>
-            <span>12.03</span>
+            <span>41.03</span>
           </div>
           <div class="total pf-box">
             <span>累计收益</span>
@@ -94,16 +131,45 @@
         </div>
       </div>
       <div class="detail">
-
+        <div class="date">已运作 5 年 10 个月</div>
+        <div class="content">
+          <div class="de-box">
+            <span>2020.1.1</span>
+            <span>成立日期</span>
+          </div>
+          <div class="de-box">
+            <span>1.0286</span>
+            <span>昨日净值</span>
+          </div>
+          <div class="de-box">
+            <span class="point">+2.86%</span>
+            <span>成立以来</span>
+          </div>
+        </div>
       </div>
     </div>
     <script>
       new Vue({
         el: '#app',
         data() {
-          return {}
+          return {
+            // 开始时间
+            startTime: '2021.1.1',
+            // 开始金额
+            startValue: 300000,
+            // 日利率 0.01337%
+            rate: 0.0001337,
+            // 时间 天数
+            days: 183
+          }
         },
-        created() {}
+        computed: {
+          
+        },
+        created() {
+          let date = new Date()
+          date.get
+        }
       })
     </script>
   </body>
