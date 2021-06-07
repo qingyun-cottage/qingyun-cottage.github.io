@@ -207,7 +207,7 @@
         },
         created() {
           this.nowDate = new Date()
-          this.days = parseInt(this.getDaysBetween(this.startDate, new Date()))
+          this.days = parseInt(this.getDaysBetween(this.startDate, this.nowDate))
         },
         methods: {
           getDaysBetween: (dateString1, dateString2) => {
