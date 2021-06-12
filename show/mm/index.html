@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>美图推荐</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .img-list {
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 50px;
+      }
+      .img-list li {
+        width: 30%;
+        /* height: 200px; */
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        /* border: 1px solid pink; */
+      }
+      .img-list li img {
+        width: 100%;
+      }
+      .pager {
+        position: fixed;
+        bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .pager span {
+        padding: 0 10px;
+        position: relative;
+        top: -5px;
+      }
+      .input-box {
+        padding: 0;
+        border: none;
+        outline: none;
+        vertical-align: bottom;
+        width: 80px;
+        height: 30px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-right: none;
+        box-sizing: border-box;
+      }
+      .btn-box {
+        border: none;
+        outline: none;
+        vertical-align: bottom;
+        border: 1px solid #ddd;
+        width: 100px;
+        height: 30px;
+      }
+      .btn-box:active {
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul class="img-list">
+        <li v-for="(item,index) in imgList" :key="index">
+          <img :src="item.img" alt="加载失败" />
+        </li>
+      </ul>
+      <div class="pager">
+        <div class="left">
+          <span>请输入页数:</span>
+          <input class="input-box" type="num" v-model.trim.number="toNum" /><button
+            class="btn-box"
+            @click="changePageNum"
+            :disabled="!toNum"
+          >
+            前往
+          </button>
+        </div>
+        <div class="center">
+          <button class="btn-box" @click="prev" :disabled="pageNum <= 1">上一页</button>
+          <span> {{pageNum}} / {{all}} </span>
+          <button class="btn-box" @click="next" :disabled="pageNum >= all">下一页</button>
+        </div>
+        <div class="right">
+          <span>请输入每页显示几张图片:</span>
+          <input class="input-box" type="num" v-model.trim.number="changeCount" /><button
+            class="btn-box"
+            @click="changePageCount"
+            :disabled="!changeCount"
+          >
+            确认
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data() {
+          return {
+            imgList: [],
+            // 每页显示的图片数量
+            pageCount: 9,
+            // 当前页数
+            pageNum: 1,
+            // 前往的页数
+            toNum: '',
+            // 更改
+            changeCount: ''
+          }
+        },
+        created() {
+          this.reqImg()
+        },
+        computed: {
+          all() {
+            return Math.ceil(688 / this.pageCount)
+          }
+        },
+        watch: {
+          pageCount() {
+            this.reqImg()
+          },
+          pageNum() {
+            this.reqImg()
+          }
+        },
+        methods: {
+          reqImg() {
+            axios({
+              method: 'post',
+              url: 'https://api.apiopen.top/getImages',
+              params: {
+                page: this.pageNum,
+                count: this.pageCount
+              }
+            }).then((res) => {
+              console.log(res.data.result)
+              this.imgList = res.data.result
+            })
+          },
+          changePageNum() {
+            this.pageNum = this.toNum
+            this.toNum = ''
+          },
+          changePageCount() {
+            this.pageCount = this.changeCount
+            this.changeCount = ''
+          },
+          prev() {
+            this.pageNum--
+          },
+          next() {
+            this.pageNum++
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
