@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>辅助工具</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/data.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <input type="text" v-model="inputValue" @input="search(inputValue,cigaretteList)" />
+        <div v-for="item in cigaretteList" v-show="item.isShow">
+          <span>{{item.id}}</span>
+          <span>{{item.name}}</span>
+          <span>{{item.price}}</span>
+          <div>
+            <span class="book">{{item.position.book}}</span>
+            <span>册</span>
+            <span class="which">{{item.position.which}}</span>
+            <span>页</span>
+            <span class="sort">{{item.position.sort}}</span>
+            <span>行</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data() {
+          return {
+            cigaretteList: [],
+            inputValue: '',
+            appState: ''
+          }
+        },
+        computed: {},
+        created() {
+          cigaretteBookData.map((groupItem) => {
+            const [book, which] = groupItem.group
+            groupItem.list.map((item, index) => {
+              const { id, name, price } = item
+              const dataStr = id + name + price
+              this.cigaretteList.push({
+                ...item,
+                isShow: false,
+                position: {
+                  book,
+                  which,
+                  sort: index + 1
+                },
+                dataStr
+              })
+            })
+          })
+          console.log(this.cigaretteList)
+        },
+        methods: {
+          search: (val, list) => {
+            console.log(list)
+            list.map((item) => {
+              item.isShow = item.dataStr.indexOf(val) != -1 ? true : false
+            })
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
