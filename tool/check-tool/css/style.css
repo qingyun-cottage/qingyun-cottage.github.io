@@ -7,3 +7,33 @@ body {
 #app {
   padding: 4vw;
 }
+#app .showBox {
+  outline: 1px solid red;
+}
+#app .showBox .showItem {
+  box-sizing: border-box;
+  height: 8vw;
+  line-height: 8vw;
+  display: flex;
+  position: relative;
+  vertical-align: text-bottom;
+}
+#app .showBox .showItem .id {
+  color: #507fff;
+  width: 20vw;
+}
+#app .showBox .showItem .name {
+  width: 50vw;
+}
+#app .showBox .showItem .tip {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: slategray;
+  text-align: center;
+}
+#app .showBox .showItem:hover .tip {
+  display: block;
+}

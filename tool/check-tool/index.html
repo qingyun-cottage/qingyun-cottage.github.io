@@ -11,19 +11,25 @@
   </head>
   <body>
     <div id="app">
+      <!-- 添加 -->
+      <div class="addValue" v-show="false">
+        <input type="text" v-model="inputValue" @input="search(inputValue,cigaretteList)" />
+      </div>
       <div>
         <input type="text" v-model="inputValue" @input="search(inputValue,cigaretteList)" />
-        <div v-for="item in cigaretteList" v-show="item.isShow">
-          <span>{{item.id}}</span>
-          <span>{{item.name}}</span>
-          <span>{{item.price}}</span>
-          <div>
-            <span class="book">{{item.position.book}}</span>
-            <span>册</span>
-            <span class="which">{{item.position.which}}</span>
-            <span>页</span>
-            <span class="sort">{{item.position.sort}}</span>
-            <span>行</span>
+        <div class="showBox">
+          <div class="showItem" v-for="item in cigaretteList" v-show="item.isShow">
+            <span class="id">{{item.id}}</span>
+            <span class="name">{{item.name}}</span>
+            <span class="price">{{item.price}}</span>
+            <div class="tip">
+              <span class="book">{{item.position.book}}</span>
+              <span>册</span>
+              <span class="which">{{item.position.which}}</span>
+              <span>页</span>
+              <span class="sort">{{item.position.sort}}</span>
+              <span>行</span>
+            </div>
           </div>
         </div>
       </div>
@@ -47,7 +53,7 @@
               const dataStr = id + name + price
               this.cigaretteList.push({
                 ...item,
-                isShow: false,
+                isShow: true,
                 position: {
                   book,
                   which,
@@ -61,9 +67,8 @@
         },
         methods: {
           search: (val, list) => {
-            console.log(list)
             list.map((item) => {
-              item.isShow = item.dataStr.indexOf(val) != -1 ? true : false
+              item.isShow = val && item.dataStr.indexOf(val) != -1 ? true : false
             })
           }
         }

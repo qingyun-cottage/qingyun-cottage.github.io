@@ -7,4 +7,40 @@ body {
 }
 #app {
   padding: 4vw;
+  .addValue {
+  }
+  .showBox {
+    outline: 1px solid red;
+    .showItem {
+      box-sizing: border-box;
+      height: 8vw;
+      line-height: 8vw;
+      display: flex;
+      position: relative;
+      vertical-align: text-bottom;
+      .id {
+        color: rgb(80, 127, 255);
+        width: 20vw;
+      }
+      .name {
+        width: 50vw;
+      }
+      .tip {
+        display: none;
+        position: absolute;
+        width: 100%;
+        // height: 8vw;
+        left: 0;
+        top: 0;
+        background-color: slategray;
+        text-align: center;
+        // line-height: 8vw;
+      }
+      &:hover {
+        .tip {
+          display: block;
+        }
+      }
+    }
+  }
 }
