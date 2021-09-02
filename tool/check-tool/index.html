@@ -12,13 +12,20 @@
   <body>
     <div id="app">
       <!-- 添加 -->
-      <div class="addValue" v-show="false">
-        <input type="text" v-model="inputValue" @input="search(inputValue,cigaretteList)" />
+      <div class="addValue">
+        <div class="inputBox">
+          <span>搜索</span>
+          <input type="text" v-model.trim="inputValue" @input="search(inputValue,cigaretteList)" />
+        </div>
+        <div class="options">
+          <!-- <span v-for=></span> -->
+        </div>
       </div>
+      <div></div>
       <div>
-        <input type="text" v-model="inputValue" @input="search(inputValue,cigaretteList)" />
+        <!-- <input type="text" v-model="inputValue" @input="search(inputValue,cigaretteList)" /> -->
         <div class="showBox">
-          <div class="showItem" v-for="item in cigaretteList" v-show="item.isShow">
+          <div class="showItem" v-for="(item,index) in cigaretteList" v-show="item.isShow" :key="index" @mousedown="">
             <span class="id">{{item.id}}</span>
             <span class="name">{{item.name}}</span>
             <span class="price">{{item.price}}</span>
@@ -41,7 +48,8 @@
           return {
             cigaretteList: [],
             inputValue: '',
-            appState: ''
+            appState: '',
+            showIndex: null,
           }
         },
         computed: {},
