@@ -4,17 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>辅助工具</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./js/data.js"></script>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style1.01.css" />
   </head>
   <body>
     <div id="app">
       <!-- 添加 -->
       <div class="addValue">
         <div class="inputBox">
-          <span>搜索</span>
+          <span>搜索(货号/名称)</span>
           <input type="text" v-model.trim="inputValue" @input="search(inputValue,cigaretteList)" />
         </div>
         <div class="options">
@@ -49,7 +52,7 @@
             cigaretteList: [],
             inputValue: '',
             appState: '',
-            showIndex: null,
+            showIndex: null
           }
         },
         computed: {},

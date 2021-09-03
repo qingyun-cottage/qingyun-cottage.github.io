@@ -11,7 +11,7 @@ body {
 #app .addValue {
   height: 12vw;
   position: fixed;
-  padding-top: 4vw;
+  padding-top: 12vw;
   top: 0;
   width: 92vw;
   background-color: #fff;
@@ -30,7 +30,7 @@ body {
   box-sizing: border-box;
 }
 #app .showBox {
-  margin-top: 12vw;
+  margin-top: 24vw;
 }
 #app .showBox .showItem {
   box-sizing: border-box;
