@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>寄存海岛</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../../public/vue2.min@2.7.14.js"></script>
     <style>
       * {
         margin: 0;
@@ -160,11 +160,17 @@
       </div>
       <div class="content-box">
         <div class="set-flex">
-          <div class="item-box" v-for="(item,index) in depositData" :key="index">
+          <div
+            class="item-box"
+            v-for="(item,index) in depositData"
+            :key="index"
+          >
             <div class="i1" :title="item.title">{{item.title}}</div>
             <div class="i2" :title="item.content">{{item.content}}</div>
             <div class="i3">
-              <a :href="item.link" target="_blank" :title="item.link">{{item.link}}</a>
+              <a :href="item.link" target="_blank" :title="item.link"
+                >{{item.link}}</a
+              >
             </div>
             <div class="del-btn" @click="delItem(index)">删除</div>
           </div>
@@ -204,7 +210,10 @@
           },
           // 新增
           addItem() {
-            if (this.depositInput.title == '' && this.depositInput.content == '') {
+            if (
+              this.depositInput.title == '' &&
+              this.depositInput.content == ''
+            ) {
               return
             }
             this.depositData.push(this.depositInput)

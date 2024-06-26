@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>收益查看</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../../public/vue2.min@2.7.14.js"></script>
     <style>
       html,
       body {
         margin: 0;
         box-sizing: border-box;
-        font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC',
-          'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+        font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC',
+          'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei',
+          'WenQuanYi Micro Hei', sans-serif;
       }
       #app {
         /* width: 50vw; */
@@ -171,7 +172,11 @@
           },
           // 昨日收益
           yesterdayValue() {
-            return (this.startValue * (1 + this.rate) ** (this.days - 1) * this.rate).toFixed(2)
+            return (
+              this.startValue *
+              (1 + this.rate) ** (this.days - 1) *
+              this.rate
+            ).toFixed(2)
           },
           // 累计收益
           total() {
@@ -207,7 +212,9 @@
         },
         created() {
           this.nowDate = new Date()
-          this.days = parseInt(this.getDaysBetween(this.startDate, this.nowDate))
+          this.days = parseInt(
+            this.getDaysBetween(this.startDate, this.nowDate)
+          )
         },
         methods: {
           getDaysBetween: (dateString1, dateString2) => {

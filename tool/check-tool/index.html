@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>辅助工具</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../../public/vue2.min@2.7.14.js"></script>
     <script src="./js/data.js"></script>
     <link rel="stylesheet" href="./css/style1.01.css" />
   </head>
@@ -18,7 +22,11 @@
       <div class="addValue">
         <div class="inputBox">
           <span>搜索(货号/名称)</span>
-          <input type="text" v-model.trim="inputValue" @input="search(inputValue,cigaretteList)" />
+          <input
+            type="text"
+            v-model.trim="inputValue"
+            @input="search(inputValue,cigaretteList)"
+          />
         </div>
         <div class="options">
           <!-- <span v-for=></span> -->
@@ -28,7 +36,13 @@
       <div>
         <!-- <input type="text" v-model="inputValue" @input="search(inputValue,cigaretteList)" /> -->
         <div class="showBox">
-          <div class="showItem" v-for="(item,index) in cigaretteList" v-show="item.isShow" :key="index" @mousedown="">
+          <div
+            class="showItem"
+            v-for="(item,index) in cigaretteList"
+            v-show="item.isShow"
+            :key="index"
+            @mousedown=""
+          >
             <span class="id">{{item.id}}</span>
             <span class="name">{{item.name}}</span>
             <span class="price">{{item.price}}</span>
@@ -57,7 +71,7 @@
         },
         computed: {},
         created() {
-          cigaretteBookData.map((groupItem) => {
+          cigaretteBookData.map(groupItem => {
             const [book, which] = groupItem.group
             groupItem.list.map((item, index) => {
               const { id, name, price } = item
@@ -78,7 +92,7 @@
         },
         methods: {
           search: (val, list) => {
-            list.map((item) => {
+            list.map(item => {
               item.isShow = item.dataStr.indexOf(val) != -1 ? true : false
             })
           }

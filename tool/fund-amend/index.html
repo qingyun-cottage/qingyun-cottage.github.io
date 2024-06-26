@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>基金校准</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../../public/vue2.min@2.7.14.js"></script>
     <style>
-      .app{
+      .app {
         position: relative;
       }
       img {
@@ -61,7 +61,11 @@
             return this.li * (1 - this.jian)
           },
           xinll() {
-            return ~~((this.xinli / (this.zong - this.jiane - this.xinli)) * 10000) / 100 + '%'
+            return (
+              ~~((this.xinli / (this.zong - this.jiane - this.xinli)) * 10000) /
+                100 +
+              '%'
+            )
           }
         }
       })

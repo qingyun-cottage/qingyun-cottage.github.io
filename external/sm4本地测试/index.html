@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>sm4加解密本地测试</title>
+        <script src="./js/vue2.min@2.7.14.js"></script>
+        <style>
+            #app {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+            }
+            .content {
+                width: 600px;
+                padding-left: 20px;
+            }
+            textarea {
+                width: 100%;
+                height: 100%;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .btn {
+                width: 100px;
+                height: 35px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .gray-text {
+                display: inline-block;
+                color: gray;
+                width: 200px;
+            }
+            input {
+                width: 360px;
+                height: 30px;
+                font-size: 18px;
+            }
+            .progress {
+                width: 200px;
+            }
+            .project {
+                padding: 10px;
+                margin-top: 15px;
+            }
+            .hang {
+                margin-top: 5px;
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+            }
+
+            .trans_box {
+                margin-bottom: 20px;
+                display: flex;
+                gap: 20px;
+            }
+
+            .text_flex_box {
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 填写信息 -->
+            <h1>sm4加解密本地测试</h1>
+            <div class="trans_box">
+                <div class="_content">
+                    <textarea cols="40" rows="6" v-model="en1"></textarea>
+                </div>
+                <div>
+                    <h3>文本加密</h3>
+                </div>
+                <div class="text_flex_box">
+                    <textarea cols="40" rows="3" ref="encodeStr">
+{{ hh1.trans1 }}
+</textarea
+                    >
+                    <textarea cols="40" rows="3" ref="encodeStr">
+{{ hh1.trans2 }}
+</textarea
+                    >
+                </div>
+            </div>
+            <!-- <div class="trans_box">
+                <div class="_content">
+                    <textarea cols="40" rows="6" v-model="en2"></textarea>
+                </div>
+                <h3>对象加密</h3>
+                <div class="text_flex_box">
+                    <textarea cols="40" rows="3" ref="encodeStr">
+{{ hh2.trans1 }}
+</textarea
+                    >
+                    <textarea cols="40" rows="3" ref="encodeStr">
+{{ hh2.trans2 }}
+</textarea
+                    >
+                </div>
+            </div> -->
+            <div class="trans_box">
+                <div class="_content">
+                    <textarea cols="40" rows="6" v-model="wxUrl1"></textarea>
+                </div>
+                <div>
+                    <h3>载荷解密</h3>
+                    <h3>16进制</h3>
+                </div>
+                <div>
+                    <textarea cols="40" rows="6" ref="encodeStr">
+{{ encodeStr1 }}
+</textarea
+                    >
+                </div>
+            </div>
+            <div class="trans_box">
+                <div class="_content">
+                    <textarea cols="40" rows="6" v-model="wxUrl2"></textarea>
+                </div>
+                <div>
+                    <h3>结果解密</h3>
+                    <h3>base64</h3>
+                </div>
+                <div>
+                    <textarea cols="40" rows="6" ref="encodeStr">
+{{ encodeStr2 }}</textarea
+                    >
+                </div>
+            </div>
+            <div>
+                <!-- 复制文本框内容 -->
+                <!-- <button class="btn" @click="copyText">复制</button>
+                <button class="btn" @click="toUrl">前往</button> -->
+            </div>
+        </div>
+        <script src="./js/sm4_test.js"></script>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    en1: '',
+                    en2: '',
+                    wxUrl1: '',
+                    wxUrl2: '',
+                },
+                created() {},
+                computed: {
+                    encodeStr1() {
+                        if (this.wxUrl1.trim() === '') return '等待解密...'
+
+                        const trans = decrypt(this.wxUrl1, {
+                            isTransBase64: true,
+                            transObj: false,
+                        })
+                        return trans || '解析失败!'
+                    },
+                    encodeStr2() {
+                        if (this.wxUrl2.trim() === '') return '等待解密...'
+
+                        const trans = decrypt(this.wxUrl2, {
+                            isTransBase64: false,
+                            transObj: false,
+                        })
+                        return trans || '解析失败!'
+                    },
+                    hh1() {
+                        if (this.en1.trim() === '') return '等待加密...'
+
+                        const trans = encrypt(this.en1, {
+                            isTransHex: false,
+                            transJson: false,
+                        })
+
+                        const trans2 = encrypt(this.en1, {
+                            isTransHex: true,
+                            transJson: false,
+                        })
+
+                        return {
+                            trans1: trans,
+                            trans2: trans2,
+                        }
+                    },
+                    hh2() {
+                        if (this.en2.trim() === '') return '等待加密...'
+
+                        let jsonStr = ''
+                        try {
+                            jsonStr = JSON.stringify(this.en2)
+                        } catch (e) {
+                            return '请输入正确的obj'
+                        }
+
+                        const trans = encrypt(jsonStr, {
+                            isTransHex: false,
+                            transJson: false,
+                        })
+
+                        const trans2 = encrypt(jsonStr, {
+                            isTransHex: true,
+                            transJson: false,
+                        })
+
+                        return {
+                            trans1: trans,
+                            trans2: trans2,
+                        }
+                    },
+                },
+                methods: {
+                    copyText() {
+                        const text = this.$refs.encodeStr
+                        text.select()
+                        document.execCommand('Copy')
+                        text.blur()
+                    },
+                    toUrl() {
+                        // 打开encodeStr的网址
+                        window.open(this.encodeStr, '_blank')
+                    },
+                },
+            })
+        </script>
+    </body>
+</html>

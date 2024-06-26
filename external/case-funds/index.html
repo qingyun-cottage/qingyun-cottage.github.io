@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>12368登录Url转换网页登录</title>
+        <script src="../../public/vue2.min@2.7.14.js"></script>
+        <style>
+            #app {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+            }
+            .content {
+                width: 600px;
+                padding-left: 20px;
+            }
+            textarea {
+                width: 100%;
+                height: 100%;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .btn {
+                width: 100px;
+                height: 35px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .gray-text {
+                display: inline-block;
+                color: gray;
+                width: 200px;
+            }
+            input {
+                width: 360px;
+                height: 30px;
+                font-size: 18px;
+            }
+            .progress {
+                width: 200px;
+            }
+            .project {
+                padding: 10px;
+                margin-top: 15px;
+            }
+            .hang {
+                margin-top: 5px;
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 填写信息 -->
+            <h1>12368登录Url转换网页登录</h1>
+            <div class="_content">
+                <textarea cols="60" rows="12" v-model="wxUrl"></textarea>
+            </div>
+            <h1>转换后</h1>
+            <div>
+                <textarea v-if="" cols="60" rows="12" ref="encodeStr">{{ encodeStr }}</textarea>
+            </div>
+            <div>
+                <!-- 复制文本框内容 -->
+                <button class="btn" @click="copyText">复制</button>
+                <button class="btn" @click="toUrl">前往</button>
+            </div>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    wxUrl: '',
+                },
+                created() {},
+                computed: {
+                    encodeStr() {
+                        const trans = decodeURIComponent(
+                            decodeURIComponent(this.wxUrl)
+                        )
+                        if (trans.trim() === '') return '等待输入网址...'
+                        // 匹配 gzhUrl= 到 &response_type 之间的内容
+                        const reg = /gzhUrl=(.*?)&response_type/
+                        const result = trans.match(reg)
+                        if (result) {
+                            return result[1]
+                        }
+
+                        return '解析失败!'
+                    },
+                },
+                methods: {
+                    copyText() {
+                        const text = this.$refs.encodeStr
+                        text.select()
+                        document.execCommand('Copy')
+                        text.blur()
+                    },
+                    toUrl() {
+                        // 打开encodeStr的网址
+                        window.open(this.encodeStr, '_blank')
+                    },
+                },
+            })
+        </script>
+    </body>
+</html>
