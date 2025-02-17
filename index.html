@@ -11,179 +11,9 @@
             content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"
         />
         <meta />
-        <script src="./public/vue2.min@2.7.14.js"></script>
         <title>青云杂货铺</title>
-        <style>
-            [v-cloak] {
-                display: none;
-            }
-            body {
-                margin: 0;
-                background: url(./public/img/bg.png) #f5f5fb;
-                background-size: 100% auto;
-                background-repeat: no-repeat;
-                /* background: #f1f2f3; */
-                color: #363636;
-                /* font-family: '思源黑体'; */
-            }
-            #app {
-                box-sizing: border-box;
-                min-width: 1060px;
-                max-width: 2560px;
-                height: 100vh;
-                margin: 0 auto;
-                overflow: auto;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-
-                .header {
-                    height: 64px;
-                    padding: 2px 16px;
-
-                    .logo {
-                        float: left;
-                        height: 100%;
-                        img {
-                            height: 100%;
-                        }
-                    }
-
-                    .my_info {
-                        height: 100%;
-                        float: right;
-                        display: flex;
-
-                        .avatar {
-                            margin-left: 16px;
-                            width: 60px;
-                            height: 60px;
-                            border-radius: 50%;
-                            overflow: hidden;
-                            display: flex;
-                            img {
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
-                            }
-                        }
-
-                        .link {
-                            margin-left: 4px;
-                            display: flex;
-                            flex-direction: column;
-
-                            a {
-                                display: flex;
-                                align-items: center;
-                                text-decoration: none;
-                            }
-
-                            a:link,
-                            a:visited,
-                            a:hover,
-                            a:active {
-                                color: #000;
-                            }
-
-                            img {
-                                width: 30px;
-                                height: 30px;
-                            }
-
-                            span {
-                                margin-left: 4px;
-                                font-size: 18px;
-                                font-weight: 800;
-                            }
-                        }
-                    }
-                }
-
-                .content {
-                    flex: 1;
-                }
-            }
-
-            .page_list {
-                margin-top: 20px;
-                padding: 0 180px;
-                display: flex;
-                flex-wrap: wrap;
-                /* justify-content: space-between; */
-
-                .page_item {
-                    flex: 0 0 25%;
-                    margin: 10px 0;
-                    padding: 0 10px;
-                    box-sizing: border-box;
-                    position: relative;
-                    a {
-                        display: block;
-                        border-radius: 20px;
-                        background: #ffffff;
-                        padding: 15px;
-
-                        text-decoration: none;
-                        color: #000;
-                        cursor: pointer;
-
-                        transition: box-shadow 0.25s ease-out,
-                            transform 0.25s ease-out;
-
-                        &:hover {
-                            box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.07);
-                            transform: translateY(-3px);
-                            transition: box-shadow 0.25s ease-out,
-                                transform 0.25s ease-out;
-
-                            .logo {
-                                transform: scale(1.1);
-                                transition: transform 0.25s ease-out;
-                            }
-                        }
-
-                        .title {
-                            display: flex;
-                            align-items: center;
-
-                            .logo {
-                                height: 28px;
-                                width: 28px;
-                                transition: transform 0.25s ease-out;
-                                img {
-                                    width: 100%;
-                                    height: 100%;
-                                    object-fit: cover;
-                                }
-                            }
-
-                            h4 {
-                                height: 28px;
-                                line-height: 28px;
-                                font-size: 16px;
-                                color: #444;
-                                font-weight: 500;
-                                margin: 0;
-                                padding-left: 15px;
-                                overflow: hidden;
-                            }
-                        }
-                        p {
-                            color: #999;
-                            line-height: 24px;
-                            height: 48px;
-                            overflow: hidden;
-                            word-break: break-all;
-                            font-size: 14px;
-                            padding-top: 5px;
-                            margin: 0;
-                            margin-top: 5px;
-                        }
-                    }
-                }
-            }
-        </style>
+        <script src="./public/vue2.min@2.7.14.js"></script>
+        <link rel="stylesheet" href="./public/css/index.css" />
     </head>
     <body>
         <div id="app" v-cloak>
@@ -226,89 +56,11 @@
                             <p>{{ item.desc }}</p>
                         </a>
                     </div>
-                    <!-- <div
-                        class="page-item"
-                        v-for="item in pageList"
-                        @click="to(item.url)"
-                    >
-                        {{item.name}}
-                    </div> -->
                 </div>
             </div>
         </div>
         <script>
-            const pageList = [
-                {
-                    name: 'TH 汎用ヒト型決戦兵器',
-                    url: 'https://qingyun-cottage.github.io/th-summary/',
-                    desc: '一个基于云存储的案例演示，用于数据记录与可视化展示。',
-                    logo: './public/app_logo/th.png',
-                },
-                {
-                    name: '刑事案款示例',
-                    url: 'https://qingyun-cottage.github.io/case-demo',
-                    desc: 'H5手机端应用案例演示，模拟涉众型非法集资案件的被害人在线进行信息的确认。',
-                    logo: './public/app_logo/case_demo.png',
-                },
-                {
-                    name: '查看图片源',
-                    url: './system/imgCollection',
-                    desc: '通过GitHub托管的仓库可以方便地存储和分享图片资源。用户可以通过直接链接访问图片，或者使用GitHub Pages展示图片库。这种方式适合需要稳定、免费且易于管理的图片存储解决方案。',
-                    logo: './public/app_logo/img.webp',
-                },
-                {
-                    name: '草稿画板',
-                    url: './tool/canvas-board',
-                    desc: '一款简单的在线绘图工具，允许用户自由绘制草图、涂鸦或进行创意设计。该工具通常具备基础的绘画功能如颜色选择、笔刷调整等，并支持保存作品以供后续编辑或分享。',
-                    logo: './tool/canvas-board/img/icon.png',
-                },
-                {
-                    name: '寄存海岛',
-                    url: './tool/deposit',
-                    desc: '一个记录网页地址的小工具，待重构',
-                },
-                {
-                    name: '基金小工具',
-                    url: './tool/fund-amend',
-                    desc: '一个平衡基金份额的小型应用程序，提供数据自动计算功能。它可以帮助个人投资者简化日常财务管理任务。',
-                    logo: './public/app_logo/fund.png',
-                },
-                {
-                    name: 'bilibili秋',
-                    url: './show/bilibili/autumn',
-                    desc: '网页动效-哔哩哔哩秋',
-                    logo: './public/app_logo/bilibili_autumn.png',
-                },
-                {
-                    name: 'bilibili冬',
-                    url: './show/bilibili/winter',
-                    desc: '网页动效-哔哩哔哩冬',
-                    logo: './public/app_logo/bilibili_winter.png',
-                },
-                {
-                    name: '贪吃蛇',
-                    url: './game/snake',
-                    desc: '经典的贪吃蛇游戏，玩家控制一条不断增长的蛇去吞噬食物，同时避免撞到墙壁或其他障碍物。此版本可能加入了新的玩法机制或视觉风格，使其更适合现代设备和观众口味。',
-                    logo: './public/app_logo/snake.png',
-                },
-                {
-                    name: '扫雷(高高高级版)',
-                    url: './game/mine',
-                    desc: '经典的扫雷游戏，玩家通过标记和点击方块来寻找雷，并避免踩雷。将经典的排雷挑战融入到了一个广阔的开放世界环境中。',
-                    logo: './public/app_logo/mine.png',
-                },
-                {
-                    name: 'css颜色表',
-                    url: './reference/html-color',
-                    desc: '提供了一个全面的CSS颜色参考指南，列出了所有可用的颜色名称及其对应的十六进制代码。这对于前端开发者来说是一个宝贵的资源，有助于快速查找和应用所需的颜色值。',
-                    logo: './public/app_logo/html_color.png',
-                },
-                // {
-                //     name: 'IQ测试',
-                //     url: './my/iq/qingyun_IQ',
-                //     desc: '在线智力测验工具的结果页面，通过一系列逻辑推理、数学计算和语言理解等问题来评估用户的智商水平。这类测试往往设计成互动形式，提供即时反馈和结果解释，既有趣又具教育意义。',
-                // },
-            ]
+            const pageList = []
             new Vue({
                 el: '#app',
                 data() {
@@ -316,8 +68,28 @@
                         pageList,
                     }
                 },
-                created() {},
+                created() {
+                    this.getAppList()
+                },
                 methods: {
+                    getAppList() {
+                        fetch('./public/app_list.json')
+                            .then(res => {
+                                if (!res.ok) {
+                                    throw new Error(
+                                        'Network response was not ok ' +
+                                            res.statusText
+                                    )
+                                }
+                                return res.json()
+                            })
+                            .then(res => {
+                                this.pageList.push(...res)
+                            })
+                            .catch(err => {
+                                console.error(err)
+                            })
+                    },
                     to(url) {
                         location.assign(url)
                     },
