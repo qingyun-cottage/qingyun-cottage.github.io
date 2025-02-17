@@ -1,4 +1,4 @@
-[v-cloak] {
+#app[v-cloak] {
     display: none;
 }
 body {
