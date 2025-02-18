@@ -12,7 +12,7 @@ body {
 }
 #app {
     box-sizing: border-box;
-    min-width: 1060px;
+    /* min-width: 1060px; */
     max-width: 2560px;
     height: 100vh;
     margin: 0 auto;
@@ -175,7 +175,7 @@ body {
         min-width: 100vw;
         overflow: hidden;
 
-        .content{
+        .content {
             margin-top: 0.5rem;
         }
     }
@@ -184,10 +184,19 @@ body {
         margin-top: 0;
         padding: 0 0.5rem;
         flex: 1;
-        overflow: auto;
 
         .page_item {
             flex: 0 0 50%;
+        }
+    }
+}
+
+/* 中型屏幕适配 */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .page_list {
+        padding: 0 0.5rem;
+        .page_item {
+            flex: 0 0 33.33%;
         }
     }
 }
