@@ -1,6 +1,8 @@
+@charset "UTF-8";
 #app[v-cloak] {
     display: none;
 }
+
 body {
     margin: 0;
     background: url(./public/img/bg.png) #f5f5fb;
@@ -10,6 +12,7 @@ body {
     color: #363636;
     /* font-family: '思源黑体'; */
 }
+
 #app {
     box-sizing: border-box;
     /* min-width: 1060px; */
@@ -20,74 +23,64 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-
-    .header {
-        height: 64px;
-        padding: 2px 16px;
-
-        .logo {
-            float: left;
-            height: 100%;
-            img {
-                height: 100%;
-            }
-        }
-
-        .my_info {
-            height: 100%;
-            float: right;
-            display: flex;
-
-            .avatar {
-                margin-left: 16px;
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                overflow: hidden;
-                display: flex;
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-
-            .link {
-                margin-left: 4px;
-                display: flex;
-                flex-direction: column;
-
-                a {
-                    display: flex;
-                    align-items: center;
-                    text-decoration: none;
-                }
-
-                a:link,
-                a:visited,
-                a:hover,
-                a:active {
-                    color: #000;
-                }
-
-                img {
-                    width: 30px;
-                    height: 30px;
-                }
-
-                span {
-                    margin-left: 4px;
-                    font-size: 18px;
-                    font-weight: 800;
-                }
-            }
-        }
-    }
-
-    .content {
-        flex: 1;
-        overflow: auto;
-    }
+}
+#app .header {
+    height: 64px;
+    padding: 2px 16px;
+}
+#app .header .logo {
+    float: left;
+    height: 100%;
+}
+#app .header .logo img {
+    height: 100%;
+}
+#app .header .my_info {
+    height: 100%;
+    float: right;
+    display: flex;
+}
+#app .header .my_info .avatar {
+    margin-left: 16px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+}
+#app .header .my_info .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#app .header .my_info .link {
+    margin-left: 4px;
+    display: flex;
+    flex-direction: column;
+}
+#app .header .my_info .link a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+#app .header .my_info .link a:link,
+#app .header .my_info .link a:visited,
+#app .header .my_info .link a:hover,
+#app .header .my_info .link a:active {
+    color: #000;
+}
+#app .header .my_info .link img {
+    width: 30px;
+    height: 30px;
+}
+#app .header .my_info .link span {
+    margin-left: 4px;
+    font-size: 18px;
+    font-weight: 800;
+}
+#app .content {
+    flex: 1;
+    overflow: auto;
 }
 
 .page_list {
@@ -96,76 +89,68 @@ body {
     display: flex;
     flex-wrap: wrap;
     /* justify-content: space-between; */
-
-    .page_item {
-        flex: 0 0 25%;
-        margin: 10px 0;
-        padding: 0 10px;
-        box-sizing: border-box;
-        position: relative;
-        a {
-            display: block;
-            border-radius: 20px;
-            background: #ffffff;
-            padding: 15px;
-
-            text-decoration: none;
-            color: #000;
-            cursor: pointer;
-
-            transition: box-shadow 0.25s ease-out, transform 0.25s ease-out;
-
-            &:hover {
-                box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.07);
-                transform: translateY(-3px);
-                transition: box-shadow 0.25s ease-out, transform 0.25s ease-out;
-
-                .logo {
-                    transform: scale(1.1);
-                    transition: transform 0.25s ease-out;
-                }
-            }
-
-            .title {
-                display: flex;
-                align-items: center;
-
-                .logo {
-                    flex-shrink: 0;
-                    height: 28px;
-                    width: 28px;
-                    transition: transform 0.25s ease-out;
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                }
-
-                h4 {
-                    height: 28px;
-                    line-height: 28px;
-                    font-size: 16px;
-                    color: #444;
-                    font-weight: 500;
-                    margin: 0;
-                    padding-left: 15px;
-                    overflow: hidden;
-                }
-            }
-            p {
-                color: #999;
-                line-height: 24px;
-                height: 48px;
-                overflow: hidden;
-                word-break: break-all;
-                font-size: 14px;
-                padding-top: 5px;
-                margin: 0;
-                margin-top: 5px;
-            }
-        }
-    }
+}
+.page_list .page_item {
+    flex: 0 0 25%;
+    margin: 10px 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+.page_list .page_item a {
+    display: block;
+    border-radius: 20px;
+    background: #ffffff;
+    padding: 15px;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    transition: box-shadow 0.25s ease-out, transform 0.25s ease-out;
+}
+.page_list .page_item a:hover {
+    box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.07);
+    transform: translateY(-3px);
+    transition: box-shadow 0.25s ease-out, transform 0.25s ease-out;
+}
+.page_list .page_item a:hover .logo {
+    transform: scale(1.1);
+    transition: transform 0.25s ease-out;
+}
+.page_list .page_item a .title {
+    display: flex;
+    align-items: center;
+}
+.page_list .page_item a .title .logo {
+    flex-shrink: 0;
+    height: 28px;
+    width: 28px;
+    transition: transform 0.25s ease-out;
+}
+.page_list .page_item a .title .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.page_list .page_item a .title h4 {
+    height: 28px;
+    line-height: 28px;
+    font-size: 16px;
+    color: #444;
+    font-weight: 500;
+    margin: 0;
+    padding-left: 15px;
+    overflow: hidden;
+}
+.page_list .page_item a p {
+    color: #999;
+    line-height: 24px;
+    height: 48px;
+    overflow: hidden;
+    word-break: break-all;
+    font-size: 14px;
+    padding-top: 5px;
+    margin: 0;
+    margin-top: 5px;
 }
 
 /* 手机端适配 */
@@ -174,29 +159,25 @@ body {
         width: 100vw;
         min-width: 100vw;
         overflow: hidden;
-
-        .content {
-            margin-top: 0.5rem;
-        }
     }
-
+    #app .content {
+        margin-top: 0.5rem;
+    }
     .page_list {
         margin-top: 0;
         padding: 0 0.5rem;
         flex: 1;
-
-        .page_item {
-            flex: 0 0 50%;
-        }
+    }
+    .page_list .page_item {
+        flex: 0 0 50%;
     }
 }
-
 /* 中型屏幕适配 */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .page_list {
         padding: 0 0.5rem;
-        .page_item {
-            flex: 0 0 33.33%;
-        }
+    }
+    .page_list .page_item {
+        flex: 0 0 33.33%;
     }
 }
