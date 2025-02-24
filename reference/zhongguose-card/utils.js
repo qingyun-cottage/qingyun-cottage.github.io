@@ -37,23 +37,6 @@ function getJSONByFetch(path) {
     })
 }
 
-function getJSONByFetch(path) {
-    return new Promise((resolve, reject) => {
-        fetch(path)
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(
-                        'Network response was not ok ' + res.statusText
-                    )
-                }
-                resolve(res.json())
-            })
-            .catch(err => {
-                reject(err)
-            })
-    })
-}
-
 // 排序
 function sortColorsByHSV(list) {
     return list.sort(function (a, b) {
@@ -95,6 +78,47 @@ function rgb2hsv(rgb) {
     }
 
     return [h, s, v]
+}
+
+// Hex转RGB
+function hexColorToRGB(hexColor) {
+    const hashRegEx = /#/
+    const hexRegEx = /0x/i
+    let red, green, blue
+    const hasHash = hashRegEx.test(hexColor)
+    const hasHex = hexRegEx.test(hexColor)
+    const color = hasHash
+        ? hexColor.replace(hashRegEx, '')
+        : hasHex
+        ? hexColor.replace(hexRegEx, '')
+        : hexColor
+    // Color has only a single char in the last digit, so the last digit must be repeated, and red and green are 0
+    if (color.length === 1) {
+        red = 0
+        green = 0
+        blue = hexToDec(color.repeat(2))
+        // Color has two chars in the last digit, so red and green are 0
+    } else if (color.length === 2) {
+        red = 0
+        green = 0
+        blue = hexToDec(color)
+        // Color has one chars for each color, so they must be repeated
+    } else if (color.length === 3) {
+        red = hexToDec(color[0].repeat(2))
+        green = hexToDec(color[1].repeat(2))
+        blue = hexToDec(color[2].repeat(2))
+        // Color has only for chars, so red is 0
+    } else if (color.length === 4) {
+        red = 0
+        green = hexToDec(color.substr(0, 2))
+        blue = hexToDec(color.substr(2, 2))
+        // All chars are filled, so no transformation is needed
+    } else {
+        red = hexToDec(color.substr(0, 2))
+        green = hexToDec(color.substr(2, 2))
+        blue = hexToDec(color.substr(4, 2))
+    }
+    return [red, green, blue]
 }
 
 // 这是一个更通用的函数，旨在接受不同格式的颜色输入（十六进制字符串、RGB数组、单独的RGB值等），并调用 contrastFromHSP 来确定最佳的字体颜色。
