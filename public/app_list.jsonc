@@ -63,6 +63,18 @@
         "url": "./reference/html-color",
         "desc": "提供了一个全面的CSS颜色参考指南，列出了所有可用的颜色名称及其对应的十六进制代码。这对于前端开发者来说是一个宝贵的资源，有助于快速查找和应用所需的颜色值。",
         "logo": "./public/app_logo/html_color.png"
+    },
+    {
+        "name": "中国色 － 传统颜色",
+        "url": "mirror/zhongguose",
+        "desc": "中国色-镜像站, 中国传统色, 色名, 色谱, 中国色名综览, AI中国色。",
+        "logo": "./public/app_logo/zhongguose.png"
+    },
+    {
+        "name": "中国色 － 重排",
+        "url": "./reference/zhongguose-card",
+        "desc": "中国色-颜色卡片, 方便查看使用。",
+        "logo": "./public/app_logo/zhongguose.png"
     }
     // {
     //     name: 'IQ测试',

@@ -69,5 +69,11 @@
         "url": "mirror/zhongguose",
         "desc": "中国色-镜像站, 中国传统色, 色名, 色谱, 中国色名综览, AI中国色。",
         "logo": "./public/app_logo/zhongguose.png"
+    },
+    {
+        "name": "中国色 － 重排",
+        "url": "./reference/zhongguose-card",
+        "desc": "中国色-颜色卡片, 方便查看使用。",
+        "logo": "./public/app_logo/zhongguose.png"
     }
 ]

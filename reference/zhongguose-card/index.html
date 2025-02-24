@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./utils.js"></script>
+        <style>
+            body {
+                background: #2c3b35;
+            }
+            .title {
+                font-size: 90px;
+                color: #fff;
+                width: 1em;
+                position: fixed;
+                right: 20px;
+                font-family: '楷体';
+            }
+            .page {
+                margin: 18px;
+                padding-right: 108px;
+            }
+            #card_list {
+                text-align: center;
+                width: auto;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .card {
+                position: relative;
+                overflow: hidden;
+                box-sizing: border-box;
+                width: 180px;
+                height: 322px;
+                padding: 36px 20px 30px;
+                border-radius: 12px;
+                text-align: right;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                justify-content: flex-end;
+                font-size: 14px;
+            }
+            .card:before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: -28px;
+                left: 28px;
+                width: 224px;
+                height: 224px;
+                background: url(./img/card_bg.png) no-repeat center;
+                background-size: contain;
+                mix-blend-mode: multiply;
+            }
+
+            .card .name {
+                font-family: '楷体';
+                font-size: 26px;
+                width: 1em;
+                position: absolute;
+                top: 36px;
+                right: 46px;
+            }
+            .card .pinyin {
+                position: absolute;
+                left: 164px;
+                top: 42px;
+                transform: rotate(90deg);
+                transform-origin: 0 0;
+            }
+            .card .rgb,
+            .card .hex {
+                line-height: 14px;
+            }
+            .card .cmyk {
+                margin-top: 4px;
+                font-size: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="title">中国色示例</h1>
+        <div class="page">
+            <div class="content">
+                <div id="card_list"></div>
+            </div>
+        </div>
+        <script>
+            // 获取json数据
+            getJSONByFetch('./data/colors.json')
+                .then(data => {
+                    handleColors(data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+
+            function handleColors(colorsArray) {
+                const sortColors = sortColorsByHSV(colorsArray).map(color => {
+                    const { CMYK, RGB } = color
+                    // return fontColorContrast(RGB)
+                    return {
+                        ...color,
+                        cmyk: `CMYK (${CMYK.join(', ')})`,
+                        rgb: `RGB (${RGB.join(', ')})`,
+                        contrast: fontColorContrast(RGB),
+                    }
+                })
+                render(sortColors)
+            }
+
+            // 组装页面
+            function render(sortColors) {
+                const cardListDOM = document.getElementById('card_list')
+                const cardItems = sortColors.map(item => {
+                    const itemDOM = document.createElement('div')
+                    itemDOM.className = 'card'
+                    itemDOM.style.backgroundColor = item.hex
+                    itemDOM.style.color = item.contrast
+                    itemDOM.innerHTML =
+                        '<span class="name">' +
+                        item.name +
+                        '</span>' +
+                        '<span class="pinyin">' +
+                        item.pinyin +
+                        '</span>' +
+                        '<span class="rgb">' +
+                        item.rgb +
+                        '</span>' +
+                        '<span class="hex">' +
+                        item.hex +
+                        '</span>' +
+                        '<span class="cmyk">' +
+                        item.cmyk +
+                        '</span>'
+                    return itemDOM
+                })
+                // cardItems组成 文档片段
+                var fragment = document.createDocumentFragment()
+                for (var i = 0; i < cardItems.length; i++) {
+                    fragment.appendChild(cardItems[i])
+                }
+                cardListDOM.appendChild(fragment)
+            }
+        </script>
+    </body>
+</html>
