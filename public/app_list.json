@@ -12,11 +12,12 @@
         "logo": "./public/app_logo/case_demo.png"
     },
     {
-        "name": "查看图片源",
-        "url": "./system/imgCollection",
-        "desc": "通过GitHub托管的仓库可以方便地存储和分享图片资源。用户可以通过直接链接访问图片，或者使用GitHub Pages展示图片库。这种方式适合需要稳定、免费且易于管理的图片存储解决方案。",
-        "logo": "./public/app_logo/img.webp"
+        "name": "动森图鉴",
+        "url": " https://qingyun-cottage.github.io/animal-crossing/",
+        "desc": "动物森友会 鱼类、昆虫、化石图鉴。",
+        "logo": "./public/app_logo/animal_crossing.jpg"
     },
+
     {
         "name": "草稿画板",
         "url": "./tool/canvas-board",
@@ -75,5 +76,11 @@
         "url": "./reference/zhongguose-card",
         "desc": "中国色-颜色卡片, 方便查看使用。",
         "logo": "./public/app_logo/zhongguose.png"
+    },
+    {
+        "name": "查看图片源",
+        "url": "./system/imgCollection",
+        "desc": "通过GitHub托管的仓库可以方便地存储和分享图片资源。用户可以通过直接链接访问图片，或者使用GitHub Pages展示图片库。这种方式适合需要稳定、免费且易于管理的图片存储解决方案。",
+        "logo": "./public/app_logo/img.webp"
     }
 ]

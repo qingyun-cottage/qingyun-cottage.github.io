@@ -1,74 +1,85 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>基金校准</title>
-    <script src="../../public/vue2.min@2.7.14.js"></script>
-    <style>
-      .app {
-        position: relative;
-      }
-      img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 50%;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app">
-      <h4>计算小工具</h4>
-      <p>总共金额 <input type="number" v-model="zong" /></p>
-      <p>持有收益 <input type="number" v-model="li" /></p>
-      <p>持有份额<input type="number" v-model="fene" /></p>
-      <p>本金 <span>{{ ben }}</span></p>
-      <p>目标本金 <input type="number" v-model="mubiao" /></p>
-      <p>减少比例 <span>{{ jianp }}</span></p>
-      <p>减少金额 <span>{{ jiane }}</span></p>
-      <p>减少份额 <span>{{ fene*jian }}</span></p>
-      <p>----------操作完验证----------</p>
-      <p>- 收 益 <span>{{ xinli }}</span></p>
-      <p>收益率 <span>{{ xinll }}</span></p>
-      <img src="./img/dome.png" />
-    </div>
-    <script>
-      new Vue({
-        el: '#app',
-        data() {
-          return {
-            zong: '',
-            li: '',
-            fene: '',
-            mubiao: ''
-          }
-        },
-        computed: {
-          ben() {
-            return this.zong - this.li
-          },
-          jian() {
-            return 1 - this.mubiao / this.ben
-          },
-          jianp() {
-            return this.jian * 100 + '%'
-          },
-          jiane() {
-            return this.zong * this.jian
-          },
-          xinli() {
-            return this.li * (1 - this.jian)
-          },
-          xinll() {
-            return (
-              ~~((this.xinli / (this.zong - this.jiane - this.xinli)) * 10000) /
-                100 +
-              '%'
-            )
-          }
-        }
-      })
-    </script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>基金校准</title>
+        <script src="../../public/vue2.min@2.7.14.js"></script>
+        <style>
+            .app {
+                position: relative;
+            }
+            img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 50%;
+            }
+            .container {
+                margin: 10px;
+                background: #0001;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div class="container" style="user-select: none;">
+                <h4>基金本金配整小工具</h4>
+                
+            </div>
+            <p>总共金额 <input type="number" v-model="zong" /></p>
+            <p>持有收益 <input type="number" v-model="li" /></p>
+            <p>持有份额<input type="number" v-model="fene" /></p>
+            <p>本金 <span>{{ ben }}</span></p>
+            <p>目标本金 <input type="number" v-model="mubiao" /></p>
+            <p>减少比例 <span>{{ jianp }}</span></p>
+            <p>减少金额 <span>{{ jiane }}</span></p>
+            <p>减少份额 <span>{{ fene*jian }}</span></p>
+            <p>----------操作完验证----------</p>
+            <p>- 收 益 <span>{{ xinli }}</span></p>
+            <p>收益率 <span>{{ xinll }}</span></p>
+            <img src="./img/dome.png" />
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        zong: '',
+                        li: '',
+                        fene: '',
+                        mubiao: '',
+                    }
+                },
+                computed: {
+                    ben() {
+                        return this.zong - this.li
+                    },
+                    jian() {
+                        return 1 - this.mubiao / this.ben
+                    },
+                    jianp() {
+                        return this.jian * 100 + '%'
+                    },
+                    jiane() {
+                        return this.zong * this.jian
+                    },
+                    xinli() {
+                        return this.li * (1 - this.jian)
+                    },
+                    xinll() {
+                        return (
+                            ~~(
+                                (this.xinli /
+                                    (this.zong - this.jiane - this.xinli)) *
+                                10000
+                            ) /
+                                100 +
+                            '%'
+                        )
+                    },
+                },
+            })
+        </script>
+    </body>
 </html>
