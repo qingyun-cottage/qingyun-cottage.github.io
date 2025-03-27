@@ -18,6 +18,12 @@
         "logo": "./public/app_logo/animal_crossing.jpg"
     },
     {
+        "name": "三养火鸡辣酱H5",
+        "url": "./show/turkey-h5",
+        "desc": "三养火鸡辣酱H5示例，关于“辣音风暴”的活动。",
+        "logo": "./public/app_logo/hot_sauce.svg"
+    },
+    {
         "name": "草稿画板",
         "url": "./tool/canvas-board",
         "desc": "一款简单的在线绘图工具，允许用户自由绘制草图、涂鸦或进行创意设计。该工具通常具备基础的绘画功能如颜色选择、笔刷调整等，并支持保存作品以供后续编辑或分享。",

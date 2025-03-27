@@ -17,7 +17,12 @@
         "desc": "动物森友会 鱼类、昆虫、化石图鉴。",
         "logo": "./public/app_logo/animal_crossing.jpg"
     },
-
+    {
+        "name": "三养火鸡辣酱H5",
+        "url": "./show/turkey-h5",
+        "desc": "三养火鸡辣酱H5示例，关于“辣音风暴”的活动。",
+        "logo": "./public/app_logo/hot_sauce.svg"
+    },
     {
         "name": "草稿画板",
         "url": "./tool/canvas-board",
