@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="./public/img/favicon.ico" />
+        <meta name="renderer" content="webkit" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"
+        />
+        <meta />
+        <title>青云杂货铺</title>
+        <script src="./public/vue2.min@2.7.14.js"></script>
+        <link rel="stylesheet" href="./public/css/index.css" />
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            <div class="header">
+                <div class="logo">
+                    <img src="./public/img/logo.svg" alt="" />
+                </div>
+                <div class="my_info">
+                    <div class="link">
+                        <a
+                            href="https://gitee.com/qingyun-cottage"
+                            target="_blank"
+                        >
+                            <img src="./public/img/gitee.svg" alt="" />
+                            <span>gitee</span>
+                        </a>
+                        <a
+                            href="https://github.com/qingyun-cottage"
+                            target="_blank"
+                        >
+                            <img src="./public/img/github.svg" alt="" />
+                            <span>github</span>
+                        </a>
+                    </div>
+                    <div class="avatar">
+                        <img src="./public/img/avatar_qingyun.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="page_list">
+                    <div class="page_item" v-for="item in pageList">
+                        <a :href="item.url" target="_blank">
+                            <div class="title">
+                                <div class="logo">
+                                    <img :src="item.logo" />
+                                </div>
+                                <h4>{{ item.name }}</h4>
+                            </div>
+                            <p>{{ item.desc }}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        pageList: [],
+                    }
+                },
+                created() {
+                    this.getAppList()
+                },
+                methods: {
+                    getAppList() {
+                        fetch('./public/app_list.json')
+                            .then(res => {
+                                if (!res.ok) {
+                                    throw new Error(
+                                        'Network response was not ok ' +
+                                            res.statusText
+                                    )
+                                }
+                                return res.json()
+                            })
+                            .then(res => {
+                                this.pageList.push(...res)
+                            })
+                            .catch(err => {
+                                console.error(err)
+                            })
+                    },
+                    to(url) {
+                        location.assign(url)
+                    },
+                },
+            })
+        </script>
+    </body>
+</html>
