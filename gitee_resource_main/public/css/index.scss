@@ -1,9 +1,15 @@
 #app[v-cloak] {
     display: none;
 }
+
+/* 
+base url
+https://gitee.com
+/qingyun-cottage/resource/raw/main/public/bg.png 
+*/
 body {
     margin: 0;
-    background: url(../../public/img/bg.png) #f5f5fb;
+    background: url('/qingyun-cottage/resource/raw/main/public/bg.png') #f5f5fb;
     background-size: 100% auto;
     background-repeat: no-repeat;
     /* background: #f1f2f3; */

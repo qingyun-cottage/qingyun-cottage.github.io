@@ -48,7 +48,7 @@ proxy.data = [
     },
     {
         name: '草稿画板',
-        url: './app/canvas-board',
+        url: 'app/canvas-board',
         desc: '一款简单的在线绘图工具，允许用户自由绘制草图、涂鸦或进行创意设计。该工具通常具备基础的绘画功能如颜色选择、笔刷调整等，并支持保存作品以供后续编辑或分享。',
         logo: '/public/app_logo/canvas_board.png',
     },
@@ -95,13 +95,13 @@ proxy.data = [
     },
     {
         name: '中国色 － 传统颜色',
-        url: 'mirror/zhongguose',
+        url: 'app/zhongguose',
         desc: '中国色-镜像站, 中国传统色, 色名, 色谱, 中国色名综览, AI中国色。',
         logo: '/public/app_logo/zhongguose.png',
     },
     {
         name: '中国色 － 重排',
-        url: './reference/zhongguose-card',
+        url: 'app/zhongguose-card',
         desc: '中国色-颜色卡片, 方便查看使用。',
         logo: '/public/app_logo/zhongguose.png',
     },

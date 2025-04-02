@@ -3,23 +3,19 @@
     display: none;
 }
 
+/* 
+base url
+https://gitee.com
+/qingyun-cottage/resource/raw/main/public/bg.png 
+*/
 body {
     margin: 0;
-    background: #f5f5fb;
+    background: url('/qingyun-cottage/resource/raw/main/public/bg.png') #f5f5fb;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    /* background: #f1f2f3; */
     color: #363636;
     /* font-family: '思源黑体'; */
-}
-
-.bg {
-    position: fixed;
-    z-index: -10;
-    top: 0;
-    left: 0;
-}
-
-.bg img{
-    width: 100%;
-    object-fit: contain;
 }
 
 #app {

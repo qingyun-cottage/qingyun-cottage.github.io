@@ -45,7 +45,16 @@
                 font-size: 14px;
                 box-shadow: 1px 2px 10px 0px #0004;
             }
-            .card:before {
+
+            .card .card_bg {
+                position: absolute;
+                top: -28px;
+                left: 28px;
+                width: 224px;
+                height: 224px;
+                mix-blend-mode: multiply;
+            }
+            /* .card:before {
                 content: '';
                 display: block;
                 position: absolute;
@@ -56,7 +65,7 @@
                 background: url(./img/card_bg.png) no-repeat center;
                 background-size: contain;
                 mix-blend-mode: multiply;
-            }
+            } */
 
             .card .name {
                 font-family: '楷体';
@@ -123,6 +132,7 @@
                     itemDOM.style.backgroundColor = item.hex
                     itemDOM.style.color = item.contrast
                     itemDOM.innerHTML =
+                        '<img class="card_bg" src="img/card_bg.png" />' +
                         '<span class="name">' +
                         item.name +
                         '</span>' +
