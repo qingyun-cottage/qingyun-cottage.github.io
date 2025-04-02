@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            href="https://gitee.com/qingyun-cottage/resource/raw/main/public/app_logo/canvas_board.png"
+        />
+        <title>草稿画板2.1</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                text-align: center;
+            }
+            #app {
+                position: relative;
+                margin: 0 auto;
+            }
+            #main-canvas {
+                box-shadow: 0 0 10px #333;
+                margin: 70px 20px 20px;
+            }
+            #draw-control {
+                position: absolute;
+                left: 20px;
+                top: 52px;
+            }
+            #draw-control li {
+                font-size: 18px;
+                list-style: none;
+                line-height: 30px;
+                text-align: left;
+            }
+            #draw-clear {
+                color: red;
+                width: 50px;
+            }
+        </style>
+    </head>
+    <body onload="init()">
+        <div id="app">
+            <h1>草稿画板2.1</h1>
+            <canvas id="main-canvas">
+                <span>该版本浏览器不支持canvas, 升级或更换浏览器!</span>
+            </canvas>
+            <ul id="draw-control">
+                <li>
+                    <span>画笔大小</span>
+                    <input
+                        id="draw-width"
+                        type="number"
+                        value="3"
+                        min="1"
+                        max="100"
+                    />
+                    <span>画笔颜色</span>
+                    <input id="draw-color" type="color" value="#333333" />
+                    <span>清空画布</span>
+                    <input id="draw-clear" type="button" value="确认" />
+                </li>
+                <li></li>
+            </ul>
+        </div>
+
+        <script>
+            let canvas, ctx, canvasWidthInput, canvasHeightInput
+
+            const init = () => {
+                canvas = document.getElementById('main-canvas')
+                adjustCanvasSize()
+                window.addEventListener('resize', adjustCanvasSize)
+
+                // 初始化控制输入框并添加事件监听器
+                // setupControls()
+                draw()
+            }
+
+            const adjustCanvasSize = () => {
+                const width = window.innerWidth - 60 // 减去边距等
+                const height = window.innerHeight - 180 // 减去标题、控件等空间
+                canvas.width = width
+                canvas.height = height
+                if (canvasWidthInput && canvasHeightInput) {
+                    canvasWidthInput.value = width
+                    canvasHeightInput.value = height
+                }
+            }
+
+            const setupControls = () => {
+                canvasWidthInput = document.createElement('input')
+                canvasHeightInput = document.createElement('input')
+                // 简化了控制面板的创建，仅展示核心逻辑
+                canvasWidthInput.type = 'number'
+                canvasHeightInput.type = 'number'
+                canvasWidthInput.onchange = () => {
+                    canvas.width = canvasWidthInput.value
+                }
+                canvasHeightInput.onchange = () => {
+                    canvas.height = canvasHeightInput.value
+                }
+            }
+
+            let draw = () => {
+                /** @type {HTMLCanvasElement} */
+                let mainCanvas = document.getElementById('main-canvas')
+                let canvasWidth = document.getElementById('canvas-width')
+                let canvasHeight = document.getElementById('canvas-height')
+                let drawWidth = document.getElementById('draw-width')
+                let drawColor = document.getElementById('draw-color')
+                let drawClear = document.getElementById('draw-clear')
+                let a = mainCanvas.getBoundingClientRect()
+                let styleWidth = 3
+                let styleColor = '#333'
+                drawWidth.onchange = () => {
+                    styleWidth = drawWidth.value
+                }
+                drawColor.onchange = () => {
+                    styleColor = drawColor.value
+                }
+
+                if (mainCanvas.getContext) {
+                    let ctx = mainCanvas.getContext('2d')
+
+                    // 清空画布
+                    drawClear.onclick = () => {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height)
+                    }
+
+                    // 鼠标按下事件
+                    mainCanvas.onmousedown = e => {
+                        e = e || window.event
+                        let lastX = 0
+                        let lastY = 0
+                        ctx.strokeStyle = styleColor
+                        ctx.lineWidth = styleWidth
+                        ctx.lineCap = 'round'
+                        mainCanvas.onmousemove = e => {
+                            e = e || window.event
+                            let x =
+                                e.clientX -
+                                mainCanvas.getBoundingClientRect().left
+                            let y =
+                                e.clientY -
+                                mainCanvas.getBoundingClientRect().top
+                            if (lastX !== 0 || lastY !== 0) {
+                                ctx.beginPath()
+                                ctx.moveTo(lastX, lastY)
+                                ctx.lineTo(x, y)
+                                ctx.stroke()
+                            }
+                            lastX = x
+                            lastY = y
+                        }
+                    }
+                    mainCanvas.onmouseup = mainCanvas.onmouseout = () => {
+                        mainCanvas.onmousemove = null
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

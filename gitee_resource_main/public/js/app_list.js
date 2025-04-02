@@ -48,7 +48,7 @@ proxy.data = [
     },
     {
         name: '草稿画板',
-        url: './tool/canvas-board',
+        url: './app/canvas-board',
         desc: '一款简单的在线绘图工具，允许用户自由绘制草图、涂鸦或进行创意设计。该工具通常具备基础的绘画功能如颜色选择、笔刷调整等，并支持保存作品以供后续编辑或分享。',
         logo: '/public/app_logo/canvas_board.png',
     },
