@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    text-align: center;
+  }
+
+  #app {
+    position: relative;
+    margin: 0 auto;
+  }
+
+  #main-canvas {
+    box-shadow: 0 0 10px #333;
+    margin: 70px 20px 20px;
+  }
+
+  #draw-control {
+    position: absolute;
+    left: 20px;
+    top: 52px;
+  }
+
+  #draw-control li {
+    font-size: 18px;
+    list-style: none;
+    line-height: 30px;
+    text-align: left;
+  }
+
+  #draw-clear {
+    color: red;
+    width: 50px;
+  }
