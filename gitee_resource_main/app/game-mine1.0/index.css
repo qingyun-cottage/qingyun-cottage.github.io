@@ -1,0 +1,105 @@
+html {
+    /* width: 2500px; */
+    background-color: #eee;
+}
+.menu {
+    position: fixed;
+    display: flex;
+    top: 15px;
+    left: 15px;
+}
+.options button {
+    padding: 6px 15px;
+    background-color: #02a4ad;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+}
+.options button:active {
+    background-color: #00abff;
+}
+.options button.active {
+    background-color: #00abff;
+}
+.info {
+    /* text-align: center; */
+    position: relative;
+    left: 15px;
+    bottom: 12px;
+}
+/* 表格样式start */
+.game-box {
+    width: 2700px;
+    margin: 100px 80px;
+    overflow: hidden;
+}
+.game-box table {
+    border-spacing: 1px;
+    background-color: #929196;
+    resize: none;
+}
+.game-box table td {
+    box-sizing: border-box;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background-color: #ccc;
+    border: 2px solid;
+    border-color: #fff #a1a1a1 #a1a1a1 #fff;
+    /* 文字 */
+    text-align: center;
+    line-height: 16px;
+    font-weight: bold;
+    user-select: none;
+}
+/* 单元格样式 */
+.game-box table td.mine,
+.game-box table td.zero,
+.game-box table td.one,
+.game-box table td.two,
+.game-box table td.three,
+.game-box table td.four,
+.game-box table td.five,
+.game-box table td.six,
+.game-box table td.seven,
+.game-box table td.eight {
+    border-color: #d9d9d9;
+    background-color: #d9d9d9;
+}
+.game-box table td.flag {
+    /* background: url(./img/flag.png) #ccc; */
+    background: url('//gitee.com/qingyun-cottage/resource/raw/main/app/game-mine1.0/flag.png') #ccc;
+    background-size: cover;
+}
+.game-box table td.mine {
+    /* background: url(./img/mine.png) #d9d9d9; */
+    background: url('//gitee.com/qingyun-cottage/resource/raw/main/app/game-mine1.0/mine.png') #ccc;
+    background-size: cover;
+}
+.game-box table td.one {
+    color: #0332fe;
+}
+.game-box table td.two {
+    color: #019f02;
+}
+.game-box table td.three {
+    color: #ff2600;
+}
+.game-box table td.four {
+    color: #93208f;
+}
+.game-box table td.five {
+    color: #dd133f;
+}
+.game-box table td.six {
+    color: #fa7821;
+}
+.game-box table td.seven {
+    color: #222;
+}
+.game-box table td.eight {
+    color: #888;
+}
+/* 表格样式end */

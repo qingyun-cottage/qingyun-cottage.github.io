@@ -83,13 +83,13 @@ proxy.data = [
     },
     {
         name: '贪吃蛇',
-        url: './game/snake',
+        url: '/app/game-snake',
         desc: '经典的贪吃蛇游戏，玩家控制一条不断增长的蛇去吞噬食物，同时避免撞到墙壁或其他障碍物。此版本可能加入了新的玩法机制或视觉风格，使其更适合现代设备和观众口味。',
         logo: '/public/app_logo/snake.png',
     },
     {
         name: '扫雷(高高高级版)',
-        url: './game/mine',
+        url: '/app/game-mine1.0',
         desc: '经典的扫雷游戏，玩家通过标记和点击方块来寻找雷，并避免踩雷。将经典的排雷挑战融入到了一个广阔的开放世界环境中。',
         logo: '/public/app_logo/mine.png',
     },
