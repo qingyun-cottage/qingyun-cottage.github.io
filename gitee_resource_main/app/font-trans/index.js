@@ -1,102 +1,60 @@
-// 打开文件
-function openFile(callback) {
-    // 打开浏览器选择文件
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.accept = '.ttf,.otf'
-    input.onchange = () => {
-        const file = input.files?.[0]
-        if (file) callback(file)
-    }
-    input.click()
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // 上传文件与文件名称
+    const btn1 = document.getElementById('btn1')
+    const fileName1 = document.getElementById('fileName1')
+    const btn1_1 = document.getElementById('btn1_1')
+    const btn1_2 = document.getElementById('btn1_2')
 
-// 将文件转换为Base64编码
-function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader()
-        reader.readAsDataURL(file) // 将文件读取为Data URL
-        reader.onload = () => {
-            // 读取完成后返回Base64编码的字符串
-            resolve(reader.result)
-        }
-        reader.onerror = error => {
-            reject(error) // 处理错误
-        }
-    })
-}
-
-// 生成精简字体文件
-async function generateSubsetFont(fileObj, textarea) {
-    if (!fileObj || textarea === '') return
-    console.log('generateSubsetFont')
-    const { fileName, font } = fileObj
-    // 获取 .notdef 字形
-    const notdefGlyph = font.charToGlyph('.notdef')
-    const glyphs = [notdefGlyph]
-    // textarea去重
-    const text = textarea.split('')
-    const uniqueText = [...new Set(text)]
-    // 遍历 textarea 中的字符，获取对应的字形并添加到 glyphs 数组中
-    uniqueText.forEach(char => {
-        const glyph = font.charToGlyph(char)
-        if (glyph) {
-            glyphs.push(glyph)
-        } else {
-            console.error(`Failed to get glyph for character: ${char}`)
-        }
-    })
-    // 检查 familyName 是否有效，若无效则提供默认值
-    const familyName = font.names.fontFamily.en || 'fontFamily'
-    // 检查 styleName 是否有效，若无效则提供默认值
-    const styleName = font.names.fontSubfamily.en || 'fontSubfamily'
-
-    const subsetFont = new opentype.Font({
-        familyName: familyName,
-        styleName: styleName,
-        unitsPerEm: font.unitsPerEm,
-        ascender: font.ascender,
-        descender: font.descender,
-        glyphs: glyphs,
+    let file1 = null
+    btn1.addEventListener('click', () => {
+        openFile(file => {
+            const fileName = file.name
+            fileName1.textContent = fileName
+            const reader = new FileReader()
+            reader.readAsArrayBuffer(file)
+            reader.onload = async event => {
+                const fontBuffer = event.target.result
+                const font = await opentype.parse(fontBuffer)
+                // 检查字体是否加载成功
+                if (!font) {
+                    console.error('Failed to load font')
+                    return
+                }
+                file1 = { fileName, font }
+            }
+        })
     })
 
-    const subsetFontBuffer = subsetFont.toArrayBuffer()
-    const subsetFontBlob = new Blob([subsetFontBuffer], {
-        type: 'application/font-sfnt',
+    btn1_1.addEventListener('click', () => {
+        generateSubsetFont(file1, textarea.value)
+    })
+    btn1_2.addEventListener('click', () => {
+        textarea.value = ''
     })
 
-    // 创建临时的 <a> 元素并触发下载
-    const link = document.createElement('a')
-    link.href = URL.createObjectURL(subsetFontBlob)
-    // 修改部分：获取上传文件的文件名并添加压缩后缀
-    const originalFileName = fileName.replace(/\.[^/.]+$/, '')
-    link.download = `${originalFileName}_subset.ttf`
-    link.click()
-    // 释放 URL 对象
-    URL.revokeObjectURL(link.href)
-}
+    const btn2 = document.getElementById('btn2')
+    const fileName2 = document.getElementById('fileName2')
+    const btn_css = document.getElementById('btn_css')
 
-// 生成css样式文件
-function generateCss(fileName, font_base64) {
-    // 文件名
-    const originalFileName = fileName.replace(/\.[^/.]+$/, '')
-    // 文件后缀
-    const fileSuffix = fileName.match(/\.[^/.]+$/)[0]
-    const formatType = { '.ttf': 'truetype', '.otf': 'opentype' }[fileSuffix]
+    let font_base64 = null
+    btn2.addEventListener('click', () => {
+        openFile(async file => {
+            btn_css.style.display = 'none'
+            const fileName = file.name
+            fileName2.textContent = fileName
+            try {
+                const base64 = await fileToBase64(file)
+                font_base64 = base64
+                // btn_css display
+                btn_css.style.display = 'inline'
+            } catch (error) {
+                console.error('文件读取失败:', error)
+            }
+        })
+    })
 
-    const css =
-        "@font-face { font-family: '" +
-        originalFileName +
-        "'; src: url('" +
-        font_base64 +
-        "') format('" +
-        formatType +
-        "'); }"
-
-    // 下载css文件
-    const link = document.createElement('a')
-    link.href = 'data:text/css;charset=utf-8,' + encodeURIComponent(css)
-    link.download = originalFileName + '.css'
-    link.click()
-    URL.revokeObjectURL(link.href)
-}
+    btn_css.addEventListener('click', () => {
+        if (!font_base64) return
+        generateCss(fileName2.textContent, font_base64)
+    })
+})

@@ -47,6 +47,24 @@ proxy.data = [
         logo: '/public/app_logo/hot_sauce.svg',
     },
     {
+        name: '字体转换工具',
+        url: '/app/font-trans',
+        desc: '压缩字体和转成css的功能。',
+        logo: '/public/app_logo/font_trans.png',
+    },
+    {
+        name: 'bilibili秋',
+        url: '/app/bilibili-show/autumn',
+        desc: '网页动效-哔哩哔哩秋',
+        logo: '/public/app_logo/bilibili_autumn.png',
+    },
+    {
+        name: 'bilibili冬',
+        url: '/app/bilibili-show/winter',
+        desc: '网页动效-哔哩哔哩冬',
+        logo: '/public/app_logo/bilibili_winter.png',
+    },
+    {
         name: '草稿画板',
         url: 'app/canvas-board',
         desc: '一款简单的在线绘图工具，允许用户自由绘制草图、涂鸦或进行创意设计。该工具通常具备基础的绘画功能如颜色选择、笔刷调整等，并支持保存作品以供后续编辑或分享。',
@@ -62,18 +80,6 @@ proxy.data = [
         url: './tool/fund-amend',
         desc: '一个平衡基金份额的小型应用程序，提供数据自动计算功能。它可以帮助个人投资者简化日常财务管理任务。',
         logo: '/public/app_logo/fund.png',
-    },
-    {
-        name: 'bilibili秋',
-        url: './show/bilibili/autumn',
-        desc: '网页动效-哔哩哔哩秋',
-        logo: '/public/app_logo/bilibili_autumn.png',
-    },
-    {
-        name: 'bilibili冬',
-        url: './show/bilibili/winter',
-        desc: '网页动效-哔哩哔哩冬',
-        logo: '/public/app_logo/bilibili_winter.png',
     },
     {
         name: '贪吃蛇',

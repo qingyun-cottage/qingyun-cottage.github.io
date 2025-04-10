@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="icon" href="https://gitee.com/qingyun-cottage/resource/raw/main/public/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bilibili冬</title>
+  <link rel="stylesheet" href="https://gitee.com/qingyun-cottage/resource/raw/main/app/bilibili-show/winter/index.css">
+</head>
+
+<body>
+  <header>
+    <div class="view">
+      <img src="https://gitee.com/qingyun-cottage/resource/raw/main/app/bilibili-show/winter/bilibli-winter-view-1.jpg"
+        class="morning" alt="" />
+      <img src="https://gitee.com/qingyun-cottage/resource/raw/main/app/bilibili-show/winter/bilibli-winter-view-2.jpg"
+        class="afternoon" alt="" />
+      <video autoplay loop muted class="evening">
+        <source
+          src="https://gitee.com/qingyun-cottage/resource/raw/main/app/bilibili-show/winter/bilibili-winter-view-3.webm"
+          type="video/webm" />
+      </video>
+      <img
+        src="https://gitee.com/qingyun-cottage/resource/raw/main/app/bilibili-show/winter/bilibili-winter-view-3-snow.png"
+        class="window-cover" alt="" />
+    </div>
+    <div class="tree">
+      <img src="https://gitee.com/qingyun-cottage/resource/raw/main/app/bilibili-show/winter/bilibili-winter-tree-1.png"
+        class="morning" alt="" />
+      <img src="https://gitee.com/qingyun-cottage/resource/raw/main/app/bilibili-show/winter/bilibili-winter-tree-2.png"
+        class="afternoon" alt="" />
+      <img src="https://gitee.com/qingyun-cottage/resource/raw/main/app/bilibili-show/winter/bilibili-winter-tree-3.png"
+        class="evening" alt="" />
+    </div>
+  </header>
+  <script>
+    const header = document.querySelector('header');
+    let startingPoint;
+    header.addEventListener('mouseenter', (e) => {
+      startingPoint = e.clientX;
+      header.classList.add('moving');
+    });
+    header.addEventListener('mouseout', (e) => {
+      header.classList.remove('moving');
+      header.style.setProperty('--percentage', 0.5);
+    });
+    header.addEventListener('mousemove', (e) => {
+      let percentage = (e.clientX - startingPoint) / window.outerWidth + 0.5;
+      header.style.setProperty('--percentage', percentage);
+    });
+  </script>
+</body>
+
+</html>

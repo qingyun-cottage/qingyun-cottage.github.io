@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Font Subset</title>
+</head>
+<body>
+ <div>
+  <p><label for="text">Choose a font file:</label></p>
+  <input type="file" id="file">
+ </div>
+ <div>
+  <p><label for="text">Text:</label></p>
+  <textarea id="text"></textarea>
+ </div>
+ <div>
+  <input type="button" id="save" value="save">
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js"></script>
+<script>
+ var save = document.getElementById("save");
+ save.onclick = function() {
+  var file = document.getElementById("file");
+  var text = document.getElementById("text");
+  if (file.files.length === 0) {
+   alert("Choose a font file.")
+   return;
+  }
+  if (text.value === "") {
+   alert("Type some text.")
+   return;
+  }
+
+  var glyphsArray = text.value.split("");
+  var glyphs = glyphsArray.filter(function(item) {
+    return item !== " ";
+   }).filter(function(item, index) {
+    return glyphsArray.indexOf(item) === index;
+   }).join("");
+
+  var reader = new FileReader();
+  reader.onload = function(error) {
+   try {
+    var font = opentype.parse(reader.result);
+    var postScriptName = font.getEnglishName("postScriptName");
+    var [familyName, styleName] = postScriptName.split("-");
+    
+    var notdefGlyph = font.glyphs.get(0);
+    notdefGlyph.name = ".notdef";
+    var subGlyphs = [notdefGlyph].concat(font.stringToGlyphs(glyphs));
+
+    var subsetFont = new opentype.Font({
+     familyName: familyName,
+     styleName: styleName,
+     unitsPerEm: font.unitsPerEm,
+     ascender: font.ascender,
+     descender: font.descender,
+     designer: font.getEnglishName("designer"),
+     designerURL: font.getEnglishName("designerURL"),
+     manufacturer: font.getEnglishName("manufacturer"),
+     manufacturerURL: font.getEnglishName("manufacturerURL"),
+     license: font.getEnglishName("license"),
+     licenseURL: font.getEnglishName("licenseURL"),
+     version: font.getEnglishName("version"),
+     description: font.getEnglishName("description"),
+     copyright: "This is a subset font of " + postScriptName + ". " + font.getEnglishName("copyright"),
+     trademark: font.getEnglishName("trademark"),
+     glyphs: subGlyphs
+    });
+    subsetFont.download();
+   } catch (error) {
+    alert(error.message);
+    throw(error);
+   }
+  };
+  reader.onerror = function(error) {
+   alert(error.message);
+   throw(error);
+  };
+  reader.readAsArrayBuffer(file.files[0]);
+ };
+</script>
+</body>
+</html>
