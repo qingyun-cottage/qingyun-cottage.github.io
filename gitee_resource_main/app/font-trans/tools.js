@@ -32,8 +32,10 @@ async function generateSubsetFont(fileObj, textarea) {
     console.log('generateSubsetFont')
     const { fileName, font } = fileObj
     // 获取 .notdef 字形
-    const notdefGlyph = font.charToGlyph('.notdef')
-    const glyphs = [notdefGlyph]
+    // const notdefGlyph = font.charToGlyph('.notdef')
+    // if(!notdefGlyph.name) notdefGlyph.name = '.notdef'
+    // .notdef 存在未知bug  下面这种可以正常生成字体文件
+    const glyphs = [font.charToGlyph('')]
     // textarea去重
     const text = textarea.split('')
     const uniqueText = [...new Set(text)]

@@ -42,7 +42,7 @@ proxy.data = [
     },
     {
         name: '三养火鸡辣酱H5',
-        url: './show/turkey-h5',
+        url: '/app/turkey-h5',
         desc: '三养火鸡辣酱H5示例，关于“辣音风暴”的活动。',
         logo: '/public/app_logo/hot_sauce.svg',
     },
@@ -95,7 +95,7 @@ proxy.data = [
     },
     {
         name: 'css颜色表',
-        url: './reference/html-color',
+        url: '/app/html-color',
         desc: '提供了一个全面的CSS颜色参考指南，列出了所有可用的颜色名称及其对应的十六进制代码。这对于前端开发者来说是一个宝贵的资源，有助于快速查找和应用所需的颜色值。',
         logo: '/public/app_logo/html_color.png',
     },
