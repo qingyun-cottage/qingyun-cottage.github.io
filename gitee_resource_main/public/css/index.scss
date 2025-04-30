@@ -33,9 +33,23 @@ body {
 
         .logo {
             float: left;
+            display: flex;
+            align-items: center;
             height: 100%;
             img {
                 height: 100%;
+            }
+            .small {
+                display: none; 
+            }
+            @media screen and (max-width: 768px) {
+                .large {
+                    display: none;
+                }
+                .small {
+                    height: 60%;
+                    display: block;
+                }
             }
         }
 
