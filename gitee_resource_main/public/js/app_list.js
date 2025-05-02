@@ -30,7 +30,7 @@ proxy.data = [
     },
     {
         name: '刑事案款示例',
-        url: 'https://qingyun-cottage.github.io/case-demo',
+        url: '/app/case-demo',
         desc: 'H5手机端应用案例演示，模拟涉众型非法集资案件的被害人在线进行信息的确认。',
         logo: '/public/app_logo/case_demo.png',
     },
