@@ -8,8 +8,8 @@
             .app {
                 position: relative;
                 margin: 0 auto;
-                width: 300px;
-                height: 300px;
+                /* width: 300px;
+                height: 300px; */
                 padding: 20px;
                 border: 1px solid #0008;
             }
@@ -97,20 +97,121 @@
                     border-radius: 14px;
                 }
             }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            .box1 {
+                margin-top: 12px;
+
+                .container {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    min-height: 34px;
+                    overflow: hidden;
+                    z-index: 2;
+
+                    .content {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: #fff;
+                        z-index: 1;
+                        border-radius: 12px;
+                        border: 1px solid transparent;
+                        background-clip: padding-box;
+                    }
+
+                    &:before {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border-radius: 12px;
+                        background: linear-gradient(
+                            to right,
+                            #8eaafa,
+                            #a2effd,
+                            #c4d8fb,
+                            #ffabc8,
+                            #f8bca4
+                        );
+                        transition: background 0.3 ease;
+                    }
+
+                    &.focus:before {
+                        background: linear-gradient(to right, #f8bca4, #f8bca4);
+                    }
+                }
+            }
+
+            .box2 {
+                margin-top: 12px;
+
+                .container {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    min-height: 34px;
+                    overflow: hidden;
+                    padding: 1px;
+                    border-radius: 12px;
+                    background: linear-gradient(white, white),
+                        linear-gradient(
+                            to right,
+                            #8eaafa,
+                            #a2effd,
+                            #c4d8fb,
+                            #ffabc8,
+                            #f8bca4
+                        );
+                    background-origin: border-box;
+                    background-clip: content-box, border-box;
+                    transition: background 0.3 ease;
+                    &.focus {
+                        background: linear-gradient(white, white),
+                            linear-gradient(to right, #f8bca4, #f8bca4);
+                        background-origin: border-box;
+                        background-clip: content-box, border-box;
+                    }
+                }
+            }
         </style>
     </head>
     <body>
         <div class="app">
-            <div class="icon">
+            <!-- <div class="icon">
                 <div class="inner">
                     <div class="circle"></div>
                     <div class="square"></div>
                     <div class="foot"></div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="test">
                 <div class="test_content"></div>
+            </div>
+
+            <div class="box1" style="width: 720px; height: 120px">
+                <div class="container">
+                    <div class="content"></div>
+                </div>
+            </div>
+            <div class="box1" style="width: 720px; height: 120px">
+                <div class="container focus">
+                    <div class="content"></div>
+                </div>
+            </div>
+            <div class="box2" style="width: 720px; height: 120px">
+                <div class="container"></div>
+            </div>
+            <div class="box2" style="width: 720px; height: 120px">
+                <div class="container focus"></div>
             </div>
         </div>
     </body>
