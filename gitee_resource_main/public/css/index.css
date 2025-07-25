@@ -105,8 +105,10 @@ body {
 .page_list {
   margin-top: 20px;
   padding: 0 180px;
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   /* justify-content: space-between; */
 }
 .page_list .page_item {
@@ -183,6 +185,8 @@ body {
     margin-top: 0.5rem;
   }
   .page_list {
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 0;
     padding: 0 0.5rem;
     flex: 1;
