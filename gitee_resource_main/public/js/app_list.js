@@ -23,6 +23,12 @@ let proxy = new Proxy(appList, {
 
 proxy.data = [
     {
+        name: '青云知识库',
+        url: '/app/qingyun-knowledge',
+        desc: '智能化得书签展示，各种笔记与知识管理。',
+        logo: '/public/logo.svg',
+    },
+    {
         name: 'TH 汎用ヒト型決戦兵器',
         url: 'https://qingyun-cottage.github.io/th-summary/',
         desc: '一个基于云存储的案例演示，用于数据记录与可视化展示。',
