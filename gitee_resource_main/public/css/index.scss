@@ -27,6 +27,11 @@ body {
     display: flex;
     flex-direction: column;
 
+    background-image: url(https://assets.papegames.com/nikkiweb/infinitynikki/infinitynikkistrategycn/_next/static/media/bg-mask.4c35c576.png) !important;
+    background-size: 100% 19.65625rem;
+    background-repeat: no-repeat;
+    background-position: top;
+
     .header {
         height: 64px;
         padding: 2px 16px;
@@ -40,7 +45,7 @@ body {
                 height: 100%;
             }
             .small {
-                display: none; 
+                display: none;
             }
             @media screen and (max-width: 768px) {
                 .large {
@@ -99,6 +104,7 @@ body {
                     margin-left: 4px;
                     font-size: 18px;
                     font-weight: 800;
+                    color: #ddd;
                 }
             }
         }
@@ -107,6 +113,13 @@ body {
     .content {
         flex: 1;
         overflow: auto;
+        padding-bottom: 6rem;
+
+        background-image: url(https://assets.papegames.com/nikkiweb/infinitynikki/infinitynikkistrategycn/_next/static/media/bg-bottom-left.d4ab8370.png),
+            url(https://assets.papegames.com/nikkiweb/infinitynikki/infinitynikkistrategycn/_next/static/media/bg-bottom-right.80d7c2ad.png);
+        background-size: 24rem auto, 24rem auto;
+        background-repeat: no-repeat, no-repeat;
+        background-position: 0 100%, 100% 100%;
     }
 }
 
@@ -197,6 +210,7 @@ body {
 
         .content {
             margin-top: 0.5rem;
+            background-size: 14rem auto, 14rem auto;
         }
     }
 

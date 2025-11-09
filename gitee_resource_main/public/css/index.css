@@ -28,6 +28,10 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  background-image: url(https://assets.papegames.com/nikkiweb/infinitynikki/infinitynikkistrategycn/_next/static/media/bg-mask.4c35c576.png) !important;
+  background-size: 100% 19.65625rem;
+  background-repeat: no-repeat;
+  background-position: top;
 }
 #app .header {
   height: 64px;
@@ -96,19 +100,23 @@ body {
   margin-left: 4px;
   font-size: 18px;
   font-weight: 800;
+  color: #ddd;
 }
 #app .content {
   flex: 1;
   overflow: auto;
+  padding-bottom: 6rem;
+  background-image: url(https://assets.papegames.com/nikkiweb/infinitynikki/infinitynikkistrategycn/_next/static/media/bg-bottom-left.d4ab8370.png), url(https://assets.papegames.com/nikkiweb/infinitynikki/infinitynikkistrategycn/_next/static/media/bg-bottom-right.80d7c2ad.png);
+  background-size: 24rem auto, 24rem auto;
+  background-repeat: no-repeat, no-repeat;
+  background-position: 0 100%, 100% 100%;
 }
 
 .page_list {
   margin-top: 20px;
   padding: 0 180px;
-  /* display: flex;
-  flex-wrap: wrap; */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   /* justify-content: space-between; */
 }
 .page_list .page_item {
@@ -183,10 +191,9 @@ body {
   }
   #app .content {
     margin-top: 0.5rem;
+    background-size: 14rem auto, 14rem auto;
   }
   .page_list {
-    display: flex;
-    flex-wrap: wrap;
     margin-top: 0;
     padding: 0 0.5rem;
     flex: 1;
