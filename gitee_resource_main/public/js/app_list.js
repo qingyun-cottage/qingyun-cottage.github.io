@@ -53,6 +53,12 @@ proxy.data = [
         logo: '/public/app_logo/hot_sauce.svg',
     },
     {
+        name: '宝可梦属性快查',
+        url: './app/pokemon',
+        desc: '关于宝可梦游戏的属性进攻/防御优势、劣势的快速查询工具。',
+        logo: '/public/app_logo/pokemon.webp',
+    },
+    {
         name: '字体转换工具',
         url: '/app/font-trans',
         desc: '压缩字体和转成css的功能。',
