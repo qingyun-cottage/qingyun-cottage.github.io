@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+.game-container {
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+#gameCanvas, #nextCanvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+button {
+    transition: all 0.3s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    button {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+    }
+}
+
+.block-i {
+    background-color: #00f0f0;
+}
+.block-o {
+    background-color: #f0f000;
+}
+.block-t {
+    background-color: #a000f0;
+}
+.block-s {
+    background-color: #00f000;
+}
+.block-z {
+    background-color: #f00000;
+}
+.block-j {
+    background-color: #0000f0;
+}
+.block-l {
+    background-color: #f0a000;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .grid-cols-1 {
+        grid-template-columns: 1fr;
+    }
+
+    .game-container {
+        padding: 2rem;
+    }
+
+    #gameCanvas {
+        width: 250px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .flex {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* 游戏状态动画 */
+.status-enter {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.status-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* 按钮悬停效果增强 */
+.btn-game {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-game::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-game:hover::before {
+    left: 100%;
+}
+
+/* 画布边框效果 */
+.canvas-border {
+    border: 3px solid #3b82f6;
+    border-radius: 0.75rem;
+}
