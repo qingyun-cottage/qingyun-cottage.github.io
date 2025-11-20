@@ -28,12 +28,12 @@ proxy.data = [
         desc: '智能化得书签展示，各种笔记与知识管理。',
         logo: '/public/logo.svg',
     },
-    {
-        name: 'TH 汎用ヒト型決戦兵器',
-        url: 'https://qingyun-cottage.github.io/th-summary/',
-        desc: '一个基于云存储的案例演示，用于数据记录与可视化展示。',
-        logo: '/public/app_logo/th.png',
-    },
+    // {
+    //     name: 'TH 汎用ヒト型決戦兵器',
+    //     url: 'https://qingyun-cottage.github.io/th-summary/',
+    //     desc: '一个基于云存储的案例演示，用于数据记录与可视化展示。',
+    //     logo: '/public/app_logo/th.png',
+    // },
     {
         name: '刑事案款示例',
         url: '/app/case-demo',
@@ -82,11 +82,11 @@ proxy.data = [
         desc: '一款简单的在线绘图工具，允许用户自由绘制草图、涂鸦或进行创意设计。该工具通常具备基础的绘画功能如颜色选择、笔刷调整等，并支持保存作品以供后续编辑或分享。',
         logo: '/public/app_logo/canvas_board.png',
     },
-    {
-        name: '寄存海岛',
-        url: './tool/deposit',
-        desc: '一个记录网页地址的小工具，待重构',
-    },
+    // {
+    //     name: '寄存海岛',
+    //     url: './tool/deposit',
+    //     desc: '一个记录网页地址的小工具，待重构',
+    // },
     {
         name: '基金小工具',
         url: './tool/fund-amend',
