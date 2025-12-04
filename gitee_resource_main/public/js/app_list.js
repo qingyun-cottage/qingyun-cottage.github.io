@@ -89,7 +89,7 @@ proxy.data = [
     // },
     {
         name: '基金小工具',
-        url: './tool/fund-amend',
+        url: './app/fund-amend',
         desc: '一个平衡基金份额的小型应用程序，提供数据自动计算功能。它可以帮助个人投资者简化日常财务管理任务。',
         logo: '/public/app_logo/fund.png',
     },
